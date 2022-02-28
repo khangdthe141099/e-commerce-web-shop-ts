@@ -1,7 +1,4 @@
 import {
-    loginStart,
-    loginSuccess,
-    loginFailure,
     registerStart,
     registerSuccess,
     registerFailure
@@ -12,17 +9,6 @@ import {
     fetchProductFailure
 } from './product/productSlice'
 import { publicRequest } from '../api/requestMethods'
-
-export const login = async (dispatch: any, user: any) => {
-    dispatch(loginStart())
-
-    try {
-        const res = await publicRequest.post('/login', user)
-        dispatch(loginSuccess(res.data))
-    } catch (err) {
-        dispatch(loginFailure())
-    }
-}
 
 export const register = async (dispatch: any, user: any) => {
     dispatch(registerStart())

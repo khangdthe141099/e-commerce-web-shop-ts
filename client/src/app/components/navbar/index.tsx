@@ -69,7 +69,7 @@ i18n
 function Navbar() {
   const { t } = useTranslation();
 
-  const [userProducts, setUserProducts] = useState([]);
+  const [userProducts, setUserProducts] = useState<any>();
   const [typeLanguage, setTypeLanguage] = useState("en");
 
   const { products } = useCart();
@@ -165,13 +165,13 @@ function Navbar() {
           {/* Cart Layout */}
           <CartContainer>
             <Link to={`/cart/${userId}`}>
-              <Badge badgeContent={userProducts.length} color="primary">
+              <Badge badgeContent={userProducts?.length} color="primary">
                 <ShoppingCartOutlined />
               </Badge>
             </Link>
 
-            <NoCart noCart={userProducts.length === 0 ? true : false}>
-              {userProducts.length === 0 ? (
+            <NoCart noCart={userProducts?.length === 0 ? true : false}>
+              {userProducts?.length === 0 ? (
                 <NoCartImg src={nocart} alt="" />
               ) : (
                 <PrevProductsContainer>
@@ -179,14 +179,13 @@ function Navbar() {
                     <PrevTitle>{t("added_product")}</PrevTitle>
                   </TitleContainer>
                   <ListProductContainer>
-                    {userProducts.map((product: Products, index) => {
+                    {userProducts?.map((product: Products, index: any) => {
                       const isSale = product.sale.isSale;
                       const salePercent = product.sale.percent;
                       const price = product.price;
                       const salePrice = price - price * (salePercent / 100);
                       const category = product.categories[1];
 
-                      console.log(category);
                       return (
                         <ProductItem key={index}>
                           <ProductImg src={product.img} alt="" />

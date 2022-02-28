@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useUser } from '../../../features/hook'
 import { useDispatch } from 'react-redux'
 import { fetchProduct } from '../../../features/apiCalls'
-import { login } from '../../../features/apiCalls'
+import { loginStart } from '../../../features/user/userSlice'
 import {
     Container,
     Wrapper,
@@ -39,7 +39,7 @@ function Login() {
     const handleClick = (e: any) => {
         e.preventDefault()
         //Dispatch action login:
-        login(dispatch, {username, password})  
+        dispatch(loginStart({username, password}))
         //Dispatch action fetch product => display lazy load
         fetchProduct(dispatch)
     }
@@ -57,7 +57,10 @@ function Login() {
                         placeholder="password" 
                         type="password" 
                         onChange={handlePassword} />
-                    <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
+                    <Button 
+                    onClick={handleClick} 
+                    disabled={isFetching}
+                    >LOGIN</Button>
                     { error && <Error>Something went wrong</Error> }
                     <Option>DO NOT YOU REMEMBER THE PASSWORD?</Option>
                     <Link to={'/register'}>

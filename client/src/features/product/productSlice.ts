@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { InitialState } from './types'
+import { ProductState } from './types'
 
-const initialState: InitialState = {
+export const initialState: ProductState = {
     isFetching: false,
     error: false,
     products: []

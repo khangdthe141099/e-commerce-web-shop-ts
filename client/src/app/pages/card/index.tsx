@@ -52,7 +52,7 @@ function Cart() {
   const userId = currentUser?._id
 
   const [stripeToken, setStripeToken] = useState<any>()
-  const [userProducts, setUserProducts] = useState([])
+  const [userProducts, setUserProducts] = useState<any>([])
   const [totalPrice, setTotalPrice] = useState(0)
 
   //Multiple language:
@@ -88,7 +88,7 @@ function Cart() {
 
   //Get total order tương ứng với list product của user:
   useEffect(() => {
-    const totalP = userProducts.reduce((total, product: any) => {
+    const totalP = userProducts.reduce((total: any, product: any) => {
       const price = product.price
       const isSale = product.sale.isSale
       const salePercent = product.sale.percent
@@ -169,14 +169,14 @@ function Cart() {
           <Info>
             {/* Kiểm tra nếu không có sp trong giỏ hàng thì hiển thị image cart empty */}
             {
-              userProducts.length === 0 &&
+              userProducts?.length === 0 &&
               <CartEmptyImg 
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMufL_fYUEBmw6UrEM-a_-Xo2JLYpsOLhs8QuP53Kyrg9OGPm2tHvX3x2LRmxAw8RTWrY&usqp=CAU" 
               alt=""/>
             }
             {/* Nếu có sp trong giỏ hàng thì map list sản phẩm và hiển thị */}
             {
-              userProducts.map((product: any, index) => {
+              userProducts.map((product: any, index: any) => {
                 const price = product.price
                 const isSale = product.sale.isSale
                 const salePercent = product.sale.percent

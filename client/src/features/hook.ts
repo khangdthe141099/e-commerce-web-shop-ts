@@ -1,19 +1,20 @@
 import { useSelector } from 'react-redux';
-import { getCart } from './cart/cartSlice' 
-import { getUser } from './user/userSlice' 
-import { getProductState } from './product/productSlice'
+import { selectCart } from './cart/selectors'
+import { selectProduct } from './product/selectors'
+import { selectUser } from './user/selectors' 
+
 
 export const useCart = () => {
-    const cart = useSelector(getCart)
+    const cart = useSelector(selectCart)
     return cart
 }
 
 export const useUser = () => {
-    const user = useSelector(getUser)
+    const user = useSelector(selectUser)
     return user
 }
 
 export const useProduct = () => {
-    const product = useSelector(getProductState)
+    const product = useSelector(selectProduct)
     return product
 }

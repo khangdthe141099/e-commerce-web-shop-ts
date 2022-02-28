@@ -1,4 +1,4 @@
-export interface InitialState {
+export interface ProductState {
     isFetching: boolean,
     error: boolean,
     products: [],

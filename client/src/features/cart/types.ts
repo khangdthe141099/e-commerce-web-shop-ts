@@ -1,6 +1,5 @@
 import { ProductsList } from "../../types";
-
-export interface InitialState {
+export interface CartState {
     products: Array<any>;
     userId: string
 }

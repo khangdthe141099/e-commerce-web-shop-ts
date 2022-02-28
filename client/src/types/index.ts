@@ -1,3 +1,6 @@
+import { RootState } from './RootState';
+
+export type { RootState };
 export interface Products {
     _id: string
     title: string

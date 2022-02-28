@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { InitialState } from './types'
+import { UserState } from './types'
 
-const initialState: InitialState = {
+export const initialState: UserState = {
     currentUser: null,
     isFetching: false,
     error: false,
@@ -11,7 +11,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        loginStart: (state) => {
+        loginStart: (state, action) => {
             state.isFetching = true
         },
         loginSuccess: (state, action) => {

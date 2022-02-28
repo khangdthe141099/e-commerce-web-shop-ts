@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { InitialState } from './types'
+import { CartState } from './types'
 
-const initialState: InitialState = {
+export const initialState: CartState = {
     products: [],  //products.quantity => Số lượng sản phẩm trong mỗi đơn hàng
     userId: '', //Thêm userId cho mỗi sản phẩm để get ra các sản phẩm với user tương ứng
 }
