@@ -15,6 +15,7 @@ export const Header = styled.div`
     position: sticky;
     top: 60px;
     z-index: 99;
+    height: 50px;
 `
 
 export const Left = styled.div`
@@ -178,6 +179,8 @@ export const Percent = styled.p`
     font-size: 20px;
     position: relative;
     left: 9px;
+    bottom: 17px;
+    width: 100%;
 `
 
 export const DiscountTitle = styled.p`
@@ -186,7 +189,7 @@ export const DiscountTitle = styled.p`
     font-size: 20px;
     position: relative;
     left: 5px;
-    bottom: 5px;
+    bottom: 42px;
 `
 
 export const InfoContainer = styled.div`
@@ -211,7 +214,7 @@ export const Sold = styled.div`
     width: 180px;
     display: flex;
     justify-content: center;
-    margin-top: 2px;
+    margin-top: -17px;
     border-radius: 10px;
 `
 

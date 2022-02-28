@@ -62,9 +62,9 @@ export const SaleContainer = styled.div`
 
 export const Price = styled.span`
     margin-top: 4px;
-    font-size: ${props => props.sale === 'sale' ? '20px' : '32px'};
-    color: ${props => props.sale === 'sale' ? '#a3a3a3' : 'black'};
-    text-decoration: ${props => props.sale === 'sale' && 'line-through 2px #a3a3a3 solid'};
+    font-size: ${(props: { sale: string }) => props.sale === 'sale' ? '20px' : '32px'};
+    color: ${(props: { sale: string }) => props.sale === 'sale' ? '#a3a3a3' : 'black'};
+    text-decoration: ${(props: { sale: string }) => props.sale === 'sale' && 'line-through 2px #a3a3a3 solid'};
 `
 
 export const FilterContainer = styled.div`
@@ -91,7 +91,7 @@ export const FilterColor = styled.div`
     background-color: ${props => props.color};
     margin: 0px 5px;
     cursor: pointer;
-    border: ${props =>  props.active === "active" ? "2px solid gray" : ""}
+    border: ${(props: { active: string }) => props.active === "active" ? "2px solid gray" : ""}
 `
 
 export const FilterSize = styled.select`
@@ -165,13 +165,14 @@ export const Amount = styled.span`
 
 export const OverView = styled.div`
     display: flex;
+    align-items: center;
+    height: 10px;
+    padding: 10px 0px;
 `
 
 export const OverViewOption = styled.div`
-    margin-top: 15px;
     display: flex;
-    border-right: ${props => props.border === true && '1px solid #767676'};
-    padding-left: ${props => props.paddingLeft === true && '10px'};
+    border-right: ${(props: { border?: boolean }) => props.border === true ? '1px solid #767676' : ''};
     padding-right: 10px;
 `
 
@@ -190,17 +191,19 @@ export const TextOverView = styled.p`
 /* =================== Flash Sale ========================= */
 
 export const FlashSaleContainer = styled.div`
-    margin-top: 10px;
+    margin: 30px 0px 20px 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
+    width: 95%;
     padding: 10px;
+    height: 25px;
     background-image: url('https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/pdp/4323ad4dc2b3c72d0474d51f20fb83e8.jpg'),linear-gradient(-90deg,#f0451e 9%,#f32424 96%);
 `
 
 export const FlashSaleTitle = styled.div`
     display: flex;
+    align-items: center;
 `
 
 export const FlashSaleTitleLeft = styled.p`
@@ -217,6 +220,7 @@ export const FlashSaleTitleRight = styled.p`
 
 export const Remaining = styled.div`
     display: flex;
+    align-items: center;
 `
 
 export const RemainingTitle = styled.p`
@@ -234,7 +238,7 @@ export const TimeBlock = styled.div`
     color: white;
     margin-right: 5px;
     font-weight: 600;
-    padding: 0 5px;
+    padding: 2px 5px;
 `
 
 /* ======================================================== */

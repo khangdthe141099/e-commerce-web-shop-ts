@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from "react-router-dom"
-import { useProduct } from '../../features/hook'
+import { useProduct } from '../../../features/hook'
 import NoProduct from '../../components/no-product'
 import Loading from '../../components/loading'
 import axios from 'axios'
@@ -35,7 +35,7 @@ function ProductList() {
     //Fetching product => Lazy loading
     const { isFetching } = useProduct()
 
-    const handleFilters = (e) => {
+    const handleFilters = (e: any) => {
         const typeSelect = e.target.name
         const value = e.target.value
         setFilter({

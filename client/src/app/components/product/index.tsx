@@ -25,7 +25,7 @@ function Product(props: {item: Item}) {
                 </Icon>
                 <Icon>
                     <Link to={`/product/${props.item._id}`}>
-                    <SearchOutlined />
+                    <SearchOutlined style={{color: "black"}}/>
                     </Link>
                 </Icon>
                 <Icon>

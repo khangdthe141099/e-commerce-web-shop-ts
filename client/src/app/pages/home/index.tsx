@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import { useProduct } from '../../features/hook'
+import { useProduct } from '../../../features/hook'
 import { Button } from './home.elements'
 import Loading from '../../components/loading'
 import Navbar from '../../components/navbar'

@@ -97,8 +97,8 @@ export const OptionDetail = styled.div`
 
 export const OptionDetailItem = styled.div`   
     margin-bottom: 30px;
-    font-size: ${props => props.type === "total" ? "24px" : "18px"};
-    font-weight: ${props => props.type === "total" ? "600" : ""};
+    font-size: ${(props: { type?: string }) => props.type === "total" ? "24px" : "18px"};
+    font-weight: ${(props: { type?: string }) => props.type === "total" ? "600" : ""};
     
 `
 

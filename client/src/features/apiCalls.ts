@@ -11,9 +11,9 @@ import {
     fetchProductSuccess,
     fetchProductFailure
 } from './product/productSlice'
-import { publicRequest } from '../axios/requestMethods'
+import { publicRequest } from '../api/requestMethods'
 
-export const login = async (dispatch, user) => {
+export const login = async (dispatch: any, user: any) => {
     dispatch(loginStart())
 
     try {
@@ -24,7 +24,7 @@ export const login = async (dispatch, user) => {
     }
 }
 
-export const register = async (dispatch, user) => {
+export const register = async (dispatch: any, user: any) => {
     dispatch(registerStart())
 
     try {
@@ -36,7 +36,7 @@ export const register = async (dispatch, user) => {
     }
 }
 
-export const fetchProduct = async (dispatch) => {
+export const fetchProduct = async (dispatch: any) => {
     dispatch(fetchProductStart())
 
     try {

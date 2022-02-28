@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useUser } from '../../features/hook'
+import { useUser } from '../../../features/hook'
 import { useDispatch } from 'react-redux'
-import { fetchProduct } from '../../features/apiCalls'
-import { login } from '../../features/apiCalls'
+import { fetchProduct } from '../../../features/apiCalls'
+import { login } from '../../../features/apiCalls'
 import {
     Container,
     Wrapper,
@@ -24,19 +24,19 @@ function Login() {
 
     const dispatch = useDispatch()
 
-    const handleUserName = (e) => {  
+    const handleUserName = (e: any) => {  
         const usernameInput = e.target.value
         const usernameRemoveSpace = usernameInput.replace(/\s+/g, '')
         setUserName(usernameRemoveSpace)
     }
 
-    const handlePassword = (e) => {
+    const handlePassword = (e: any) => {
         const passwordInput = e.target.value
         const passwordRemoveSpace = passwordInput.replace(/\s+/g, '')
         setPassword(passwordRemoveSpace) 
     }
 
-    const handleClick = (e) => {
+    const handleClick = (e: any) => {
         e.preventDefault()
         //Dispatch action login:
         login(dispatch, {username, password})  

@@ -15,6 +15,7 @@ export const Header = styled.div`
     position: sticky;
     top: 60px;
     z-index: 99;
+    height: 50px;
 `
 
 export const Left = styled.div`
@@ -159,8 +160,9 @@ export const DiscountTitle = styled.p`
     font-weight: 400;
     font-size: 20px;
     position: relative;
-    left: 10px;
-    top: 12px;
+    top: -5px; 
+    display: flex;
+    justify-content: center;
 `
 
 export const InfoContainer = styled.div`
@@ -185,7 +187,7 @@ export const Sold = styled.div`
     width: 180px;
     display: flex;
     justify-content: center;
-    margin-top: 2px;
+    margin-top: -17px;
     border-radius: 10px;
 `
 

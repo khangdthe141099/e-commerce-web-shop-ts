@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { InitialState } from './types'
 
-const initialState = {
+const initialState: InitialState = {
     isFetching: false,
     error: false,
-    products: [],
+    products: []
 }
 
 const productSlice = createSlice({
@@ -31,4 +32,4 @@ export const {
 
 export default productSlice.reducer
 
-export const getProductState = state => state.product
+export const getProductState = (state: any) => state.product

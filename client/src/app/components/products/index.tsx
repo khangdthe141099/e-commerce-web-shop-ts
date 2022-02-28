@@ -97,30 +97,30 @@ function Products(product: ProductsProps) {
     }, [products, saleProducts, cat, filter])
 
     //Sort list products:
-    // useEffect(() => {
-    //     if ((sort === "newest")) {
-    //         setFilteredProducts((prev) =>
-    //             [...prev].sort((a, b) => a.createdAt - b.createdAt)
-    //         )
-    //         setFilteredSaleProducts((prev) =>
-    //         [...prev].sort((a, b) => a.createdAt - b.createdAt)
-    //         )
-    //     } else if ((sort === "asc")) {
-    //         setFilteredProducts((prev) =>
-    //             [...prev].sort((a, b) => a.price - b.price)
-    //         )
-    //         setFilteredSaleProducts((prev) =>
-    //         [...prev].sort((a, b) => a.price - b.price)
-    //         )
-    //     } else {
-    //         setFilteredProducts((prev) =>
-    //             [...prev].sort((a, b) => b.price - a.price)
-    //         )
-    //         setFilteredSaleProducts((prev) =>
-    //         [...prev].sort((a, b) => b.price - a.price)
-    //         )
-    //     }
-    // }, [sort])
+    useEffect(() => {
+        if ((sort === "newest")) {
+            setFilteredProducts((prev) =>
+                [...prev].sort((a: any, b: any) => a.createdAt - b.createdAt)
+            )
+            setFilteredSaleProducts((prev) =>
+            [...prev].sort((a: any, b: any) => a.createdAt - b.createdAt)
+            )
+        } else if ((sort === "asc")) {
+            setFilteredProducts((prev) =>
+                [...prev].sort((a: any, b: any) => a.price - b.price)
+            )
+            setFilteredSaleProducts((prev) =>
+            [...prev].sort((a: any, b: any) => a.price - b.price)
+            )
+        } else {
+            setFilteredProducts((prev) =>
+                [...prev].sort((a: any, b: any) => b.price - a.price)
+            )
+            setFilteredSaleProducts((prev) =>
+            [...prev].sort((a: any, b: any) => b.price - a.price)
+            )
+        }
+    }, [sort])
 
     const fetchMoreData = async () => {
         try {

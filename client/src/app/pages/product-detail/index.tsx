@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Swal from 'sweetalert2'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useUser } from '../../features/hook'
-import { addProduct } from '../../features/cart/cartSlice'
+import { useUser } from '../../../features/hook'
+import { addProduct } from '../../../features/cart/cartSlice'
 import { useDispatch } from 'react-redux'
 import { Remove, Add, AddShoppingCart, Star, AccessTime } from '@mui/icons-material';
 import axios from 'axios'
-import { publicRequest } from '../../axios/requestMethods'
+import { publicRequest } from '../../../api/requestMethods'
 import {
     Container,
     Wrapper,
@@ -56,7 +56,7 @@ import Footer from '../../components/footer'
 import { useTranslation } from "react-i18next";
 
 function ProductDetail() {
-    const [product, setProduct] = useState({})
+    const [product, setProduct] = useState<any>()
     const [quantity, setQuantity] = useState(1)
     const [color, setColor] = useState('')
     const [size, setSize] = useState('')
@@ -84,7 +84,7 @@ function ProductDetail() {
 
     const navigate = useNavigate()
 
-    const handleQuantity = (type) => {
+    const handleQuantity = (type: string) => {
         if (type === "dec") {
             quantity > 1 && setQuantity(quantity - 1)
         } else if (type === "inc") {
@@ -169,10 +169,10 @@ function ProductDetail() {
 
             <Wrapper>
                 <ImgContainer>
-                    <Image src={product.img} />
+                    <Image src={product?.img} />
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>{product.title}</Title>
+                    <Title>{product?.title}</Title>
 
                     <OverView>
                         <OverViewOption border={true} style={{ display: 'flex', alignItems: 'center' }}>
@@ -180,19 +180,19 @@ function ProductDetail() {
                             {/* Render number of star of each product */}
                             {
                                 Array(rating)
-                                .fill()
+                                .fill('')
                                 .map((_, index) => (
                                     <Star sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }} />
                                 ))
                             }
                         </OverViewOption>
 
-                        <OverViewOption border={true} paddingLeft={true}>
+                        <OverViewOption border={true} style={{ paddingLeft: '10px'}}>
                             <NumberOverView>350</NumberOverView>
                             <TextOverView>{t('product_detail_evaluate')}</TextOverView>
                         </OverViewOption>
 
-                        <OverViewOption paddingLeft={true}>
+                        <OverViewOption style={{ paddingLeft: '10px'}}>
                             <NumberOverView>998</NumberOverView>
                             <TextOverView>{t('product_detail_sold')}</TextOverView>
                         </OverViewOption>
@@ -221,7 +221,7 @@ function ProductDetail() {
                     }
 
                     <Desc>
-                        {product.desc}
+                        {product?.desc}
                     </Desc>
 
                     <PriceContainer>
@@ -241,7 +241,7 @@ function ProductDetail() {
                         <Filter>
                             <FilterTitle>{t('product_detail_color')}</FilterTitle>
                             {
-                                product.color?.map((c) => (
+                                product?.color?.map((c: any) => (
                                     <FilterColor color={c} key={c}
                                         onClick={() => setColor(c)}
                                         active={c === color ? "active" : ""} />
@@ -252,7 +252,7 @@ function ProductDetail() {
                             <FilterTitle>{t('product_detail_size')}</FilterTitle>
                             <FilterSize onChange={(e) => setSize(e.target.value)}>
                                 {
-                                    product.size?.map((s) => (
+                                    product?.size?.map((s: any) => (
                                         <FilterSizeOption key={s}>{s}</FilterSizeOption>
                                     ))
                                 }

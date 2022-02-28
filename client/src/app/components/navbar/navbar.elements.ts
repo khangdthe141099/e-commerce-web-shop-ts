@@ -10,9 +10,11 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 0px 20px 0px 20px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  height: 100%;
 `;
 
 // ========== Begin Left Component ==========
@@ -143,10 +145,12 @@ export const ProductItem = styled.div`
   margin: 2.5px 5px;
   padding-bottom: 5px;
   border-bottom: 1px solid lightgray;
+  height: 70px;
 `
 
 export const ProductImg = styled.img`
   width: 15%;
+  height: 100%;
 `
 
 export const ProductCenter = styled.div`
@@ -154,9 +158,11 @@ export const ProductCenter = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 60%;
+  height: 100%;
 `
 
 export const ProductName = styled.p`
+  margin-top: 0px;
   font-weight: 500;
   font-size: 15px;
 `
@@ -165,6 +171,7 @@ export const ProductCat = styled.p`
   font-size: 13px;
   color: grey;
   font-weight: 500;
+  margin-top: -5px;
 `
 
 export const ProductRight = styled.div`

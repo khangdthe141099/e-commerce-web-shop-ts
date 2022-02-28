@@ -12,7 +12,7 @@ import {
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-import { useUser } from '../../features/hook'
+import { useUser } from '../../../features/hook'
 import { useLocation } from "react-router";
 import {
     Container,
@@ -44,7 +44,7 @@ import {
 function Success() {
     // const { ExcelDownloder } = useExcelDownloder();
 
-    const location = useLocation();
+    const location: any = useLocation();
 
     //in Cart.jsx I sent data and product. Please check that page for the changes.(in video it's only data)
     const data = location.state.stripeData;
@@ -55,7 +55,7 @@ function Success() {
     const userId = currentUser._id
     const TOKEN = currentUser.accessToken
 
-    const [order, setOrder] = useState(null);
+    const [order, setOrder] = useState<any>();
 
 
     useEffect(() => {
@@ -67,7 +67,7 @@ function Success() {
                     headers: { token: `Bearer ${TOKEN}` },
                     data: {
                         userId: userId,
-                        products: products.map((item) => ({
+                        products: products.map((item: any) => ({
                             productId: item._id,
                             quantity: item.quantity,
                         })),
@@ -88,7 +88,7 @@ function Success() {
             <Container>
                 <Wrapper>
                     <Top>
-                        <CheckCircle sx={{ fontSize: 80, color: '#1178bd' }} />
+                        <CheckCircle style={{ fontSize: 80, color: '#1178bd' }} />
                         <Title>Thank you for your order!</Title>
                         <Desc>The order confirmation email with details of your order and a link to track its progress has been sent to your email address</Desc>
                         <OrderInfo>`YOUR ORDER # IS: {order?._id} - {order?.status}`</OrderInfo>
@@ -100,7 +100,7 @@ function Success() {
                             <Option>
                                 <SubOption>
                                     <SubOptionTitle>
-                                        <Home sx={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
+                                        <Home style={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
                                         SHIPPING ADDRESS
                                     </SubOptionTitle>
                                     <SubOptionDesc>
@@ -114,7 +114,7 @@ function Success() {
 
                                 <SubOption>
                                     <SubOptionTitle>
-                                        <Business sx={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
+                                        <Business style={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
                                         BILLING ADDRESS
                                     </SubOptionTitle>
                                     <SubOptionDesc>
@@ -130,7 +130,7 @@ function Success() {
                             <Option>
                                 <SubOption>
                                     <SubOptionTitle>
-                                        <LocalShipping sx={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
+                                        <LocalShipping style={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
                                         SHIPPING METHOD
                                     </SubOptionTitle>
                                     <SubOptionDesc>
@@ -140,7 +140,7 @@ function Success() {
 
                                 <SubOption>
                                     <SubOptionTitle>
-                                        <Payment sx={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
+                                        <Payment style={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
                                         PAYMENT METHOD
                                     </SubOptionTitle>
                                     <SubOptionDesc>
@@ -156,7 +156,7 @@ function Success() {
                         <Right>
                             <OptionRight>
                                 <OptionTitle>
-                                    <EventNote sx={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
+                                    <EventNote style={{ fontSize: 30, color: '#1178bd', marginRight: '5px' }} />
                                     ORDER SUMMARY
                                 </OptionTitle>
                                 <OptionDetail>
@@ -184,9 +184,9 @@ function Success() {
 
                             <ListButton>
                                 <ListButtonLeft>
-                                    <Link to="/" sx={{textDecoration: 'none'}}>
+                                    <Link to="/" style={{textDecoration: 'none'}}>
                                         <Button>
-                                            <ArrowLeft sx={{ marginRight: '5px' }} />
+                                            <ArrowLeft style={{ marginRight: '5px' }} />
                                             Continue Shopping
                                         </Button>
                                     </Link>
@@ -194,11 +194,11 @@ function Success() {
 
                                 <ListButtonRight>
                                     <Button>
-                                        <Print sx={{ marginRight: '5px' }} />
+                                        <Print style={{ marginRight: '5px' }} />
                                         Print Order
                                     </Button>
                                     <Button>
-                                        <Autorenew sx={{ marginRight: '5px' }} />
+                                        <Autorenew style={{ marginRight: '5px' }} />
                                         Re-Order
                                     </Button>
                                 </ListButtonRight>

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from "react-redux";
-import { useUser } from '../../features/hook'
-import { changeQuantityInCart, checkoutSuccess, removeProduct } from '../../features/cart/cartSlice'
+import { useUser } from '../../../features/hook'
+import { changeQuantityInCart, checkoutSuccess, removeProduct } from '../../../features/cart/cartSlice'
 import { Remove, Add, Delete } from '@mui/icons-material';
-import { fetchProduct } from '../../features/apiCalls'
+import { fetchProduct } from '../../../features/apiCalls'
 import { useNavigate, Link } from 'react-router-dom'
 import StripeCheckout from 'react-stripe-checkout';
-import { userRequest } from '../../axios/requestMethods'
-import { useCart } from '../../features/hook'
+import { userRequest } from '../../../api/requestMethods'
+import { useCart } from '../../../features/hook'
 import {
   Container,
   Bottom,
@@ -51,7 +51,7 @@ function Cart() {
   const { currentUser } = useUser()
   const userId = currentUser?._id
 
-  const [stripeToken, setStripeToken] = useState(null)
+  const [stripeToken, setStripeToken] = useState<any>()
   const [userProducts, setUserProducts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
 
@@ -64,30 +64,31 @@ function Cart() {
   const KEY = "pk_test_51KBFaCJdarKw3EgP9KG3G4T82t2yHexGTfjf23yJYJKH0CDBmK5CV5Jd5GZM24WJ6jUP0KTZ4SfzjrBPWbZvYQra007ziAhRta"
 
   //Sau khi thanh toán xong => chạy vào hàm onToken => set stripeToken thông tin thanh toán
-  const onToken = (token) => {
+  const onToken = (token: any) => {
     setStripeToken(token)
   }
 
   //Xóa sản phẩm khỏi giỏ hàng khi click remove button:
-  const handleRemove = (id) => {
+  const handleRemove = (id: string) => {
     dispatch(removeProduct(id))
   }
 
   //Thay đổi số lượng mỗi sản phẩm trong cart:
-  const handleClick = (type, id) => {
+  const handleClick = (props: { type: string, id: string}) => {
+    const { type, id } = props
     dispatch(changeQuantityInCart({ type, id }))
   }
 
   //Get list product tương ứng với user:
   useEffect(() => {
-    const userP = products.filter(product => product.userId === userId)
+    const userP = products.filter((product: any) => product.userId === userId)
 
     setUserProducts(userP)
   }, [products, userId])
 
   //Get total order tương ứng với list product của user:
   useEffect(() => {
-    const totalP = userProducts.reduce((total, product) => {
+    const totalP = userProducts.reduce((total, product: any) => {
       const price = product.price
       const isSale = product.sale.isSale
       const salePercent = product.sale.percent
@@ -161,7 +162,7 @@ function Cart() {
             token={onToken}
             stripeKey={KEY}
           >
-            <TopButton type="filled">{t('product_cart_checkout_now')}</TopButton>
+            <TopButton kieu="filled">{t('product_cart_checkout_now')}</TopButton>
           </StripeCheckout>
         </Top>
         <Bottom>
@@ -175,7 +176,7 @@ function Cart() {
             }
             {/* Nếu có sp trong giỏ hàng thì map list sản phẩm và hiển thị */}
             {
-              userProducts.map((product, index) => {
+              userProducts.map((product: any, index) => {
                 const price = product.price
                 const isSale = product.sale.isSale
                 const salePercent = product.sale.percent
@@ -183,6 +184,8 @@ function Cart() {
 
                 const totalPrice = product.quantity * price
                 const totalSalePrice = product.quantity * salePrice
+
+                const productId = product._id
 
                 return (
                   <>
@@ -207,9 +210,15 @@ function Cart() {
                       </ProductDetail>
                       <PriceDetail>
                         <ProductAmountContainer>
-                          <Add onClick={() => handleClick('asc', product._id)} />
+                          <Add onClick={() => handleClick({
+                            type: 'asc',
+                            id: productId
+                          })} />
                           <ProductAmount>{product.quantity}</ProductAmount>
-                          <Remove onClick={() => handleClick('des', product._id)} />
+                          <Remove onClick={() => handleClick({
+                            type: 'des',
+                            id: productId
+                          })} />
                         </ProductAmountContainer>
                         <ProductPrice>${isSale ? totalSalePrice : totalPrice}</ProductPrice>
                       </PriceDetail>

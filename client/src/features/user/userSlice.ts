@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { InitialState } from './types'
 
-const initialState = {
+const initialState: InitialState = {
     currentUser: null,
     isFetching: false,
     error: false,
@@ -51,4 +52,4 @@ export const {
 } = userSlice.actions
 export default userSlice.reducer
 
-export const getUser = state => state.user
+export const getUser = (state: any) => state.user

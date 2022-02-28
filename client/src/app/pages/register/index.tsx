@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { register } from '../../features/apiCalls'
+import { register } from '../../../features/apiCalls'
 import { Link } from 'react-router-dom'
 import {
     Container,
@@ -69,7 +69,7 @@ function Register() {
         }
     }
 
-    const handleClick = (e) => {
+    const handleClick = (e: any) => {
         e.preventDefault()
 
         getValidation()

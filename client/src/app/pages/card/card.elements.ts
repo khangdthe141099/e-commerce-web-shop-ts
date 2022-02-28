@@ -22,10 +22,10 @@ export const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
-  border: ${(props) => props.type === "filled" ? "none" : "3px dashed"};
-  background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
-  color: ${(props) => props.type === "filled" && "white"};
+  border: ${(props: { kieu?: string }) => props.kieu === "filled" ? "none" : "3px dashed"};
+  background-color: ${(props: { kieu?: string }) =>
+    props.kieu === "filled" ? "black" : "transparent"};
+  color: ${(props: { kieu?: string }) => props.kieu === "filled" && "white"};
 `;
 
 export const TopTexts = styled.div`
@@ -137,8 +137,8 @@ export const SummaryItem = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "500"};
-  font-size: ${(props) => props.type === "total" && "24px"};
+  font-weight: ${(props: { type?: string }) => props.type === "total" && "500"};
+  font-size: ${(props: { type?: string }) => props.type === "total" && "24px"};
 `;
 
 export const SummaryItemText = styled.span``;
