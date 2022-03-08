@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { fetchProduct } from '../../../features/apiCalls'
+// import { fetchProduct } from '../../../features/apiCalls'
+import { fetchProductStart } from '../../../features/product/productSlice'
 import { useDispatch } from 'react-redux'
 import { Category } from './types'
 import {
@@ -20,7 +21,7 @@ function CategoryItem(props: { category: Category }) {
 
     //Delay api call => display lazy load:
     const handleClick = () => {
-        dispatch(fetchProduct)
+        dispatch(fetchProductStart())
     }
 
     return (

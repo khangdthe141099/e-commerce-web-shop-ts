@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useUser } from '../../../features/hook'
 import { useDispatch } from 'react-redux'
-import { fetchProduct } from '../../../features/apiCalls'
+// import { fetchProduct } from '../../../features/apiCalls'
+import { fetchProductStart } from '../../../features/product/productSlice'
 import { loginStart } from '../../../features/user/userSlice'
 import {
     Container,
@@ -41,7 +42,7 @@ function Login() {
         //Dispatch action login:
         dispatch(loginStart({username, password}))
         //Dispatch action fetch product => display lazy load
-        fetchProduct(dispatch)
+        dispatch(fetchProductStart())
     }
 
 

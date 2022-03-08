@@ -36,7 +36,8 @@ import {
 } from './sale-products.elements'
 import Countdown from '../countdown'
 import { useTranslation } from "react-i18next";
-import { fetchProduct } from '../../../features/apiCalls'
+// import { fetchProduct } from '../../../features/apiCalls'
+import { fetchProductStart } from '../../../features/product/productSlice'
 import { useDispatch } from 'react-redux'
 
 function SaleProducts() {
@@ -94,7 +95,7 @@ function SaleProducts() {
 
                 <Right>
                 <Link to="/products/sale" style={{textDecoration: "none"}}>
-                    <Option onClick={() => dispatch(fetchProduct)}>
+                    <Option onClick={() => dispatch(fetchProductStart())}>
                         {t('see_all')} 
                         <ArrowForwardIos fontSize="small" />
                     </Option>

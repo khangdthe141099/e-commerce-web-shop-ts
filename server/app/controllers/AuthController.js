@@ -59,7 +59,7 @@ class AuthController {
             res.status(200).json({ ...others, accessToken })
 
         } catch (err){
-            res.status(500).json(err)
+            console.log(err)
         }
     }
 

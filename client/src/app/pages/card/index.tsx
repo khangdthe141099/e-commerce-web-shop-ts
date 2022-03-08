@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { useUser } from '../../../features/hook'
 import { changeQuantityInCart, checkoutSuccess, removeProduct } from '../../../features/cart/cartSlice'
 import { Remove, Add, Delete } from '@mui/icons-material';
-import { fetchProduct } from '../../../features/apiCalls'
+// import { fetchProduct } from '../../../features/apiCalls'
+import { fetchProductStart } from '../../../features/product/productSlice'
 import { useNavigate, Link } from 'react-router-dom'
 import StripeCheckout from 'react-stripe-checkout';
 import { userRequest } from '../../../api/requestMethods'
@@ -146,7 +147,7 @@ function Cart() {
         <Title>{t('product_cart_your_bag')}</Title>
         <Top>
           <Link to={'/products'}>
-            <TopButton onClick={() => dispatch(fetchProduct)}>{t('product_cart_continue_shopping')}</TopButton>
+            <TopButton onClick={() => dispatch(fetchProductStart())}>{t('product_cart_continue_shopping')}</TopButton>
           </Link>
           <TopTexts>
             <TopText>{t('product_cart_shopping_bag')} ({userProducts.length})</TopText>

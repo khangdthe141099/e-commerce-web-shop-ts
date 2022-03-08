@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { registerStart } from '../../../features/user/userSlice'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { register } from '../../../features/apiCalls'
 import { Link } from 'react-router-dom'
 import {
     Container,
@@ -75,13 +75,12 @@ function Register() {
         getValidation()
 
         if (validatePassword()) {
-            register(dispatch, {
-                name,
+            dispatch(registerStart({name,
                 address,
                 username,
                 email,
                 password
-            })
+            }))
             navigate('/login')
         } else {
             setIsMatch(false)
