@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../../utils/responsive'
 
 export const Container = styled.div`
     flex: 1;
@@ -29,7 +30,11 @@ export const Info = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;   
+    align-items: center; 
+    @media ${device.laptopAsus} { 
+        top: 276px;
+        left: 162px; 
+    }
 `
 
 export const Title = styled.h1`

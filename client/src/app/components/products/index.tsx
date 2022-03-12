@@ -21,6 +21,8 @@ function Products(product: ProductsProps) {
     const [filteredProducts, setFilteredProducts] = useState([])
     const [hasMore, setHasMore] = useState(true)
 
+    const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
+
     //===== Hanlde infinite loading =====
     //Số lượng sản phẩm hiển thị lần render đầu tiên(trước khi infinite-loading)
     const productSize = 8
@@ -32,7 +34,7 @@ function Products(product: ProductsProps) {
     useEffect(() => {
         const getProducts = async () => {
             try{
-                const res = await axios.get(`http://localhost:5000/product`)
+                const res = await axios.get(`${URL}product`)
 
                 setListProducts(res.data)
             }catch(err){
@@ -40,7 +42,7 @@ function Products(product: ProductsProps) {
             }
         }
         getProducts()
-    }, [])
+    }, [URL])
 
     //Get list sale products:
     useEffect(() => {
@@ -60,8 +62,8 @@ function Products(product: ProductsProps) {
             try {
                 const res = await axios.get(
                     cat
-                        ? `http://localhost:5000/product?category=${cat}`
-                        : `http://localhost:5000/product`)
+                        ? `${URL}product?category=${cat}`
+                        : `${URL}product`)
 
                 setProducts(res.data.slice(0, productSize))
 
@@ -71,7 +73,7 @@ function Products(product: ProductsProps) {
         }
         getProducts();
 
-    }, [cat])
+    }, [cat, URL])
 
     //Filter Products by Color and Size:
     useEffect(() => {
@@ -126,8 +128,8 @@ function Products(product: ProductsProps) {
         try {
             const res = await axios.get(
                 cat
-                        ? `http://localhost:5000/product?category=${cat}`
-                        : `http://localhost:5000/product`)
+                        ? `${URL}product?category=${cat}`
+                        : `${URL}product`)
 
             //index của sản phẩm => xử lí thêm sản phẩm:
             const index = indexProducts.current
@@ -149,7 +151,6 @@ function Products(product: ProductsProps) {
             setTimeout(() => {
                 setProducts(newProducts)
             }, 1500)
-
         } catch (err) {
             console.log(err)
         }

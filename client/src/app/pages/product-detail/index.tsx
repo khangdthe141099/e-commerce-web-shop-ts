@@ -61,6 +61,8 @@ function ProductDetail() {
     const [color, setColor] = useState('')
     const [size, setSize] = useState('')
 
+    const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
+
     //Multiple language:
     const { t } = useTranslation()
 
@@ -98,7 +100,7 @@ function ProductDetail() {
         try {
             const createCart = async () => {
                 await axios({
-                    url: 'http://localhost:5000/cart',
+                    url: `${URL}cart`,
                     method: 'POST',
                     headers: { token: `Bearer ${TOKEN}` },
                     data: {

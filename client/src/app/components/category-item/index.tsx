@@ -14,7 +14,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 
-function CategoryItem(props: { category: Category }) {    
+function CategoryItem(props: { category: Category }) { 
     const { t } = useTranslation()
 
     const dispatch = useDispatch()
@@ -22,11 +22,11 @@ function CategoryItem(props: { category: Category }) {
     //Delay api call => display lazy load:
     const handleClick = () => {
         dispatch(fetchProductStart())
-    }
+    }    
 
     return (
         <Container>
-            <Image src={props.category.img}/>
+            <Image id="testImg" src={props.category.img}/>
             <Info id={props.category.id}>
                 <Title>{props.category.title}</Title>
                 <Link to={`/products/${props.category.cat}`}>

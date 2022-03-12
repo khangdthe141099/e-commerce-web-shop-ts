@@ -38,6 +38,8 @@ function TopProducts() {
   const [products, setProducts] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0);
 
+  const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
+
   const { t } = useTranslation();
 
   //Filter to get list sale products:
@@ -49,7 +51,7 @@ function TopProducts() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/product`);
+        const res = await axios.get(`${URL}product`);
 
         setProducts(res.data);
       } catch (err) {
@@ -58,7 +60,7 @@ function TopProducts() {
     };
 
     getProducts();
-  }, []);
+  }, [URL]);
 
   //Handle slider product:
   const handleClick = (direction: string) => {

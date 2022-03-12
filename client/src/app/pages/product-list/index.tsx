@@ -25,6 +25,8 @@ function ProductList() {
     const [filter, setFilter] = useState({})
     const [sort, setSort] = useState("newest")
 
+    const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
+
     //Multiple language:
     const { t } = useTranslation()
 
@@ -49,8 +51,8 @@ function ProductList() {
             try{
                 const res = await axios.get(
                     cat 
-                    ? `http://localhost:5000/product?category=${cat}`
-                    : `http://localhost:5000/product`
+                    ? `${URL}product?category=${cat}`
+                    : `${URL}product`
                 )
                 
                 setIsProducts(res.data.length > 0 ? true : false)
@@ -63,7 +65,7 @@ function ProductList() {
             }
         } 
         getProducts()
-    }, [cat])
+    }, [cat, URL])
 
     useEffect(() => {
         window.scrollTo(0,0);

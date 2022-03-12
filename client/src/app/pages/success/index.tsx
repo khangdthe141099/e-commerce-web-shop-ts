@@ -57,12 +57,14 @@ function Success() {
 
     const [order, setOrder] = useState<any>();
 
+    const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
+
 
     useEffect(() => {
         const createOrder = async () => {
             try {
                 const res = await axios({
-                    url: "http://localhost:5000/order",
+                    url: `${URL}order`,
                     method: "POST",
                     headers: { token: `Bearer ${TOKEN}` },
                     data: {
@@ -80,7 +82,7 @@ function Success() {
             } catch { }
         };
         data && createOrder();
-    }, [data, userId, TOKEN, products, total]);
+    }, [data, userId, TOKEN, products, total, URL]);
 
 
     return (

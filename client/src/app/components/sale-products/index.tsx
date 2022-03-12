@@ -44,6 +44,8 @@ function SaleProducts() {
     const [products, setProducts] = useState([])
     const [slideIndex, setSlideIndex] = useState(0)
 
+    const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
+
     const { t } = useTranslation()
 
     const dispatch = useDispatch()
@@ -59,16 +61,17 @@ function SaleProducts() {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/product`)
+                const res = await axios.get(`${URL}product`)
 
                 setProducts(res.data)
+
             } catch (err) {
                 console.log(err)
             }
         }
 
         getProducts()
-    }, [])
+    }, [URL])
 
 
     //Handle slider product:
