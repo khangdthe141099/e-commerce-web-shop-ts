@@ -9,7 +9,7 @@ router.post("/create", verifyTokenAndAdmin, ProductController.createProduct)
 router.put("/:id", verifyTokenAndAdmin, ProductController.updateProduct)
 
 //Tăng view của sản phẩm khi xem chi tiết mỗi sản phẩm:
-router.patch("/:id", ProductController.increaseView)
+router.patch("/increase/view/:id", ProductController.increaseView)
 
 router.delete("/:id", verifyTokenAndAdmin, ProductController.deleteProduct)
 

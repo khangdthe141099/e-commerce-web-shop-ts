@@ -33,6 +33,8 @@ import {
   Info,
 } from "./top-products.elements";
 import { useTranslation } from "react-i18next";
+import { fetchProductStart } from "../../../features/product/productSlice";
+import { useDispatch } from 'react-redux'
 
 function TopProducts() {
   const [products, setProducts] = useState([]);
@@ -41,6 +43,8 @@ function TopProducts() {
   const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
 
   const { t } = useTranslation();
+
+  const dispatch = useDispatch()
 
   //Filter to get list sale products:
   const saleProducts = products.filter(
@@ -81,10 +85,12 @@ function TopProducts() {
         </Left>
 
         <Right>
-          <Option>
+        <Link to="/products/sale" style={{textDecoration: "none"}}>
+          <Option onClick={() => dispatch(fetchProductStart())}>
             {t("see_all")}
             <ArrowForwardIos fontSize="small" />
           </Option>
+          </Link>
         </Right>
       </Header>
 
