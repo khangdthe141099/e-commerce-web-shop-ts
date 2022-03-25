@@ -63,6 +63,8 @@ function ProductDetail() {
 
     const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
 
+    console.log(product?.view)
+
     //Multiple language:
     const { t } = useTranslation()
 

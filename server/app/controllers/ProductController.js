@@ -26,7 +26,7 @@ class ProductController {
 
         try{
             const viewUpdate = await Product.findByIdAndUpdate(req.params.id, {
-                 $set: { view: req.body.view + 2 }
+                 $set: { view: parseInt(req.body.view) + 2 }
             }, { new: true })
 
             res.status(200).json(viewUpdate)

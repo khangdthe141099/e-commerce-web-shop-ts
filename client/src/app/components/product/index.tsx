@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import axios from 'axios'
 import { ShoppingCartOutlined, 
         SearchOutlined, 
         FavoriteBorderOutlined
@@ -14,6 +15,11 @@ import {
 import { Item } from './types'
 
 function Product(props: {item: Item}) {
+    const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
+
+    const handleIncreaseView = async () => {
+        await axios.patch(`${URL}product/increase/view/${props.item._id}`)
+    }
 
     return (
         <Container>
@@ -24,7 +30,7 @@ function Product(props: {item: Item}) {
                     <ShoppingCartOutlined />
                 </Icon>
                 <Icon>
-                    <Link to={`/product/${props.item._id}`}>
+                    <Link onClick={handleIncreaseView} to={`/product/${props.item._id}`}>
                     <SearchOutlined style={{color: "black"}}/>
                     </Link>
                 </Icon>
