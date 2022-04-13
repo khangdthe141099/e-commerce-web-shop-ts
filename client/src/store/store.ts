@@ -15,12 +15,14 @@ import storage from 'redux-persist/lib/storage'
 import cartReducer from '../features/cart/cartSlice'
 import userReducer from '../features/user/userSlice'
 import productReducer from '../features/product/productSlice'
+import activeReducer from '../features/active/activeSlice'
 import rootSaga from '../features/saga'
 
 const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
   product: productReducer,
+  active: activeReducer
 })
 
 const persistConfig = {

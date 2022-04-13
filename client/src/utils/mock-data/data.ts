@@ -99,3 +99,30 @@ export const languages = [
       country_code: "vn",
     },
   ];
+
+export const navbar = [
+    {
+        id: 1,
+        label: 'HOME',
+        url: '/',
+        icon: 'Home'
+    },
+    {
+        id: 2,
+        label: 'PRODUCTS',
+        url: '/products',
+        icon: 'Home'
+    },
+    {
+        id: 3,
+        label: 'NEWS',
+        url: '/',
+        icon: 'Home'
+    },
+    {
+        id: 4,
+        label: 'CONTACT',
+        url: '/',
+        icon: 'Home'
+    }
+]

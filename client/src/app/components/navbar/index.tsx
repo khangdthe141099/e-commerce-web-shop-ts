@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { logoutSuccess } from "../../../features/user/userSlice";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { useUser } from "../../../features/hook";
-import { useCart } from "../../../features/hook";
-import { Search, ShoppingCartOutlined } from "@mui/icons-material";
-import { removeProduct } from "../../../features/cart/cartSlice";
-import nocart from "../../../assets/images/no_cart.png";
-import { Badge } from "@mui/material";
+import React, { useEffect, useState } from 'react';
+import { logoutSuccess } from '../../../features/user/userSlice';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate  } from 'react-router-dom';
+import { useUser } from '../../../features/hook';
+import { useCart } from '../../../features/hook';
+import {  Search, 
+          ShoppingCartOutlined,
+          Category,
+          Home,
+          Newspaper,
+          ContactPage
+            } from '@mui/icons-material';
+import { removeProduct } from '../../../features/cart/cartSlice';
+import nocart from '../../../assets/images/no_cart.png';
+import { Badge } from '@mui/material';
 import {
   Container,
   Wrapper,
@@ -38,39 +44,56 @@ import {
   PriceContainer,
   Quantity,
   LanguageOption,
-} from "./navbar.elements";
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import HttpApi from "i18next-http-backend";
-import { languages } from "../../../utils/mock-data/data";
-import i18next from "i18next";
-import { useTranslation } from "react-i18next";
-import { Products } from '../../../types'
+  NavbarList,
+  NavbarItem,
+  NavigationNav,
+  NavbarItemBottom,
+  NavbarItemTop,
+  Indicator
+} from './navbar.elements';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import HttpApi from 'i18next-http-backend';
+import { languages } from '../../../utils/mock-data/data';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
+import { Products } from '../../../types';
+import { navbar } from '../../../utils/mock-data/data';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .use(LanguageDetector)
   .use(HttpApi)
   .init({
-    supportedLngs: ["en", "vn"],
-    fallbackLng: "en",
+    supportedLngs: ['en', 'vn'],
+    fallbackLng: 'en',
     detection: {
       // order and from where user language should be detected
-      order: ["cookie", "htmlTag", "localStorage", "path", "subdomain"],
-      caches: ["cookie"],
+      order: ['cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
+      caches: ['cookie'],
     },
     backend: {
-      loadPath: "/locales/{{lng}}/translation.json",
+      loadPath: '/locales/{{lng}}/translation.json',
     },
     react: { useSuspense: false },
   });
 
 function Navbar() {
+ 
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
+
   const [userProducts, setUserProducts] = useState<any>();
-  const [typeLanguage, setTypeLanguage] = useState("en");
+  const [typeLanguage, setTypeLanguage] = useState('en');
+
+  const [active1, setActive1] = useState(true);
+  const [active2, setActive2] = useState(false);
+  const [active3, setActive3] = useState(false);
+  const [active4, setActive4] = useState(false);
+
+  const [activeAll, setActiveAll] = useState(1);
 
   const { products } = useCart();
 
@@ -94,15 +117,40 @@ function Navbar() {
     dispatch(removeProduct(id));
   };
 
+  //handle active navbar
+  const handleActive = (props: any) => {
+    setActiveAll(props)
+
+    setActive1(false)
+    setActive2(false)
+    setActive3(false)
+    setActive4(false)
+    if(props === 1){
+      setActive1(true)
+    }
+    if(props === 2){
+      setActive2(true)
+      navigate('/products')
+    }
+    if(props === 3){
+      setActive3(true)
+    }
+    if(props === 4){
+      setActive4(true)
+    }
+  }
+
   //Lấy ra danh sách sản phẩm tương ứng với user:
   useEffect(() => {
-    const userProduct = products.filter((product: any) => product.userId === userId);
+    const userProduct = products.filter(
+      (product: any) => product.userId === userId,
+    );
 
     setUserProducts(userProduct);
   }, [products, userId]);
 
   const handleScrollTop = () => {
-    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   return (
@@ -120,15 +168,46 @@ function Navbar() {
               </LanguageOption>
             ))}
           </Language>
-          <SearchContainer>
-            <Input />
-            <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
+          <NavigationNav>
+            <NavbarList>
+            <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+              <NavbarItem onClick={() => handleActive(1)}>               
+                  <NavbarItemTop isActiveTop={active1}>
+                    <Home style={{fontSize: '30px'}}/>
+                  </NavbarItemTop>
+                  <NavbarItemBottom isActiveBot={active1}>HOME</NavbarItemBottom>
+              </NavbarItem>
+              </Link>
+              <NavbarItem onClick={() => handleActive(2)}>           
+                  <NavbarItemTop isActiveTop={active2}>
+                    <Category style={{fontSize: '30px'}}/>
+                  </NavbarItemTop>
+                  <NavbarItemBottom isActiveBot={active2}>PRODUCTS</NavbarItemBottom>               
+              </NavbarItem>
+              <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+              <NavbarItem onClick={() => handleActive(3)}>   
+                  <NavbarItemTop isActiveTop={active3}>
+                    <Newspaper style={{fontSize: '30px'}}/>
+                  </NavbarItemTop>
+                  <NavbarItemBottom isActiveBot={active3}>NEWS</NavbarItemBottom>
+              </NavbarItem>
+              </Link>
+              <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+              <NavbarItem onClick={() => handleActive(4)}>              
+                  <NavbarItemTop isActiveTop={active4}>
+                    <ContactPage style={{fontSize: '30px'}}/>
+                  </NavbarItemTop>
+                  <NavbarItemBottom isActiveBot={active4}>CONTACT</NavbarItemBottom>
+              </NavbarItem>
+              </Link>
+              <Indicator activeAll={activeAll}></Indicator>
+            </NavbarList>
+          </NavigationNav>
         </Left>
 
         <Center>
-          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-            <Logo onClick={handleScrollTop}>K-Tech.</Logo>
+          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+            <Logo onClick={handleScrollTop}>K-TECH.</Logo>
           </Link>
         </Center>
 
@@ -136,28 +215,28 @@ function Navbar() {
           {currentUser ? (
             <>
               <MenuItem>
-                {t("welcome")} {currentUser.name} !
+                {t('welcome')} {currentUser.name} !
               </MenuItem>
               <Link
                 to="/login"
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: 'none', color: 'black' }}
               >
-                <MenuItem onClick={handleLogout}>{t("log_out")}</MenuItem>
+                <MenuItem onClick={handleLogout}>{t('log_out')}</MenuItem>
               </Link>
             </>
           ) : (
             <>
               <Link
                 to="/register"
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: 'none', color: 'black' }}
               >
-                <MenuItem>{t("register")}</MenuItem>
+                <MenuItem>{t('register')}</MenuItem>
               </Link>
               <Link
                 to="/login"
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: 'none', color: 'black' }}
               >
-                <MenuItem>{t("sign_in")}</MenuItem>
+                <MenuItem>{t('sign_in')}</MenuItem>
               </Link>
             </>
           )}
@@ -176,7 +255,7 @@ function Navbar() {
               ) : (
                 <PrevProductsContainer>
                   <TitleContainer>
-                    <PrevTitle>{t("added_product")}</PrevTitle>
+                    <PrevTitle>{t('added_product')}</PrevTitle>
                   </TitleContainer>
                   <ListProductContainer>
                     {userProducts?.map((product: Products, index: any) => {
@@ -192,7 +271,7 @@ function Navbar() {
                           <ProductCenter>
                             <ProductName>{product.title}</ProductName>
                             <ProductCat>
-                              {t("category")}: {category}
+                              {t('category')}: {category}
                             </ProductCat>
                           </ProductCenter>
                           <ProductRight>
@@ -203,7 +282,7 @@ function Navbar() {
                             <RemoveBtn
                               onClick={() => handleRemove(product._id)}
                             >
-                              {t("remove_btn")}
+                              {t('remove_btn')}
                             </RemoveBtn>
                           </ProductRight>
                         </ProductItem>
@@ -211,7 +290,7 @@ function Navbar() {
                     })}
                   </ListProductContainer>
                   <Link to={`/cart/${userId}`}>
-                    <ViewCartBtn>{t("view_cart_btn")}</ViewCartBtn>
+                    <ViewCartBtn>{t('view_cart_btn')}</ViewCartBtn>
                   </Link>
                 </PrevProductsContainer>
               )}

@@ -12,6 +12,8 @@ import NewsLetter from '../../components/news-letter'
 import Footer from '../../components/footer'
 import SaleProducts from '../../components/sale-products'
 import TopProducts from '../../components/top-products'
+import Features from '../../components/features'
+import FashionNew from '../../components/fashion-news'
 
 function Home() {
     const [showGoToTop, setShowGoToTop] = useState(false)
@@ -53,7 +55,9 @@ function Home() {
                             <Categories />
                             <SaleProducts />
                             <TopProducts />
+                            <Features />
                             <Products />
+                            <FashionNew />
                             <NewsLetter />
                             <Footer />
                         </>

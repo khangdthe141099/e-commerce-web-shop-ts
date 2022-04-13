@@ -5,19 +5,34 @@ export const Container = styled.div`
 `
 
 export const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+export const TopWrapper = styled.div`
     padding: 50px;
     display: flex;
+    border-bottom: 2px solid #d2d1d1;
 `
 
 export const ImgContainer = styled.div`
     flex: 1;
 `
 
-export const Image = styled.img`
+export const Image = styled.div`
     width: 85%;
-    height: 80vh;
-    object-fit: cover;
+    height: 85vh;
     border-radius: 10px;
+    background-image: ${(props: { image: any }) => `URL(${props.image})`};
+    background-size: 100%;
+    background-position: center;
+    transition: 1s;
+    cursor: zoom-in;
+    &:hover {
+        background-size: 110%;
+        background-position: center;
+    }
 `
 
 export const InfoContainer = styled.div`

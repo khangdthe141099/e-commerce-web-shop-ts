@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectCart } from './cart/selectors'
 import { selectProduct } from './product/selectors'
 import { selectUser } from './user/selectors' 
+import { getActive } from './active/activeSlice'
 
 
 export const useCart = () => {
@@ -17,4 +18,9 @@ export const useUser = () => {
 export const useProduct = () => {
     const product = useSelector(selectProduct)
     return product
+}
+
+export const useActive = () => {
+    const active = useSelector(getActive)
+    return active
 }

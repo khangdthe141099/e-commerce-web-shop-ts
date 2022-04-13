@@ -48,12 +48,15 @@ import {
     GLeft,
     GRight,
     Guarantee,
-    GuaranteeIcon
+    GuaranteeIcon,
+    TopWrapper
 } from './product.elements'
 import Navbar from '../../components/navbar'
 import Announcement from '../../components/announcement'
 import Footer from '../../components/footer'
 import { useTranslation } from "react-i18next";
+import ReviewsProduct from '../../components/reviews-product'
+import NewsLetter from '../../components/news-letter'
 
 function ProductDetail() {
     const [product, setProduct] = useState<any>()
@@ -63,7 +66,6 @@ function ProductDetail() {
 
     const URL = process.env.REACT_APP_API_ENDPOINT || "http://localhost:5000/"
 
-    console.log(product?.view)
 
     //Multiple language:
     const { t } = useTranslation()
@@ -95,7 +97,6 @@ function ProductDetail() {
             setQuantity(quantity + 1)
         }
     }
-
 
     //Using redux to add to card:
     const handleClick = () => {
@@ -166,14 +167,17 @@ function ProductDetail() {
         window.scrollTo(0, 0);
     }, [])
 
+
     return (
         <Container>
             <Announcement />
             <Navbar />
 
             <Wrapper>
-                <ImgContainer>
-                    <Image src={product?.img} />
+            <TopWrapper>
+                <ImgContainer >
+                    <Image 
+                    image={product?.img} />
                 </ImgContainer>
                 <InfoContainer>
                     <Title>{product?.title}</Title>
@@ -289,8 +293,12 @@ function ProductDetail() {
                         <GRight>{t('product_detail_money_back')}</GRight>
                     </Guarantee>
                 </InfoContainer>
+            </TopWrapper>
+
+            <ReviewsProduct />
             </Wrapper>
 
+            <NewsLetter />                 
             <Footer />
         </Container>
     )

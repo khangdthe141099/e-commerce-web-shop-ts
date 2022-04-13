@@ -1,0 +1,42 @@
+.form-group {
+    display: flex;
+    flex-direction: column
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-input {
+    border: none;
+    border-bottom: 1px solid #ec5990;
+    border-left: 5px solid #ec5990;
+    height: 50px;
+}
+
+.error {
+    border-left: 5px solid #ec5990;
+}
+
+.form-input:focus {
+    border: none;
+}
+
+.form-title {
+    margin-bottom: 15px;
+}
+
+.form-submit {
+    background-color: #ec5990;
+    color: white;
+    border: none;
+    width: 150px;
+    min-height: 50px;
+    margin: auto;
+}
+
+.form-submit:hover {
+    opacity: 0.8;
+}

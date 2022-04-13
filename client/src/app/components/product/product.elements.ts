@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../../utils/responsive'
 
 export const Info = styled.div`
     opacity: 0;
@@ -29,6 +30,10 @@ export const Container = styled.div`
 
     &:hover ${Info}{
         opacity: 1;
+    }
+
+    @media ${device.laptopAsus} {
+        min-width: 450px;
     }
 `
 
