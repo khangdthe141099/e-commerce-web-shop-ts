@@ -47,8 +47,6 @@ function ReviewsProduct() {
   const productDesc = product.filter((item: any) => item?._id === id)
 
 
-  console.log(productDesc)
-
   const handleClick = (id: number) => {
     setTabId(id);
   };

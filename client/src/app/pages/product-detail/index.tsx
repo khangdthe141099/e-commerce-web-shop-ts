@@ -61,10 +61,6 @@ import NewsLetter from '../../components/news-letter'
 import Typography from '@mui/material/Typography';
 import CustomSeparator  from '../../components/custom-separator'
 
-const handleClickBreadCrumbs = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    
-    console.info('You clicked a breadcrumb.');
-}
 
 function ProductDetail() {
     const [product, setProduct] = useState<any>()
@@ -221,7 +217,7 @@ function ProductDetail() {
                                 Array(rating)
                                 .fill('')
                                 .map((_, index) => (
-                                    <Star sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }} />
+                                    <Star key={index} sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }} />
                                 ))
                             }
                         </OverViewOption>
