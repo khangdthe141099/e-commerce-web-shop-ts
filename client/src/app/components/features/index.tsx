@@ -18,7 +18,7 @@ import {
 import { Link } from 'react-router-dom'
 
 
-function Fretures() {
+function Features() {
   return (
       <>
     <Container>
@@ -38,16 +38,12 @@ function Fretures() {
                 <Image2 src="https://i.pinimg.com/564x/83/53/d5/8353d5cead0c6ffb5f7b91f1e2db2cfa.jpg" alt=""/>
             <Info info={2}>
                 <Title titleProps={2}>Iphone</Title>
-                <Link to={'/'} style={{color: 'white'}}> 
-                </Link>
             </Info>
                 </RightTopLeft>
                 <RightTopRight>
                 <Image3 src="https://i.pinimg.com/564x/46/9e/0c/469e0c8d8e57f667ca7c2f7faa40ba66.jpg" alt=""/>
             <Info info={3}>
                 <Title titleProps={2}>Macbook</Title>
-                <Link to={'/'} style={{color: 'white'}}> 
-                </Link>
             </Info>
                 </RightTopRight>
             </RightTop>
@@ -56,8 +52,6 @@ function Fretures() {
             <Image4 src="https://i.pinimg.com/564x/fa/a9/97/faa997115f4fdfaa2b40197a8d9081f8.jpg" alt=""/>
             <Info info={4}>
                 <Title titleProps={2}>Free Shipping On All Orders</Title>
-                <Link to={'/'} style={{color: 'white'}}> 
-                </Link>
             </Info>
             </RightBottom>
         </Right>
@@ -66,4 +60,4 @@ function Fretures() {
   )
 }
 
-export default Fretures
+export default Features

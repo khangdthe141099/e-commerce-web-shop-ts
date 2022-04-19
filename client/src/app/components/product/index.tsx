@@ -24,13 +24,14 @@ function Product(props: {item: Item}) {
     return (
         <Container>
             <Circle />
-            <Image src={props.item.img}/>
+            <Image src={props.item.img} alt="product"/>
             <Info>
                 <Icon>
                     <ShoppingCartOutlined />
                 </Icon>
                 <Icon>
                     <Link onClick={handleIncreaseView} to={`/product/${props.item._id}`}>
+                    <span style={{display: 'none'}}>Hi</span>
                     <SearchOutlined style={{color: "black"}}/>
                     </Link>
                 </Icon>

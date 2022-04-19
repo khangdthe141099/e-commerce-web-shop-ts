@@ -10,7 +10,7 @@ import {
 function NoProduct() {
     return (
         <Container>
-            <Image src="https://www.pngitem.com/pimgs/m/690-6908694_grunge-sold-out-label-psd-hd-png-download.png"/>
+            <Image src="https://www.pngitem.com/pimgs/m/690-6908694_grunge-sold-out-label-psd-hd-png-download.png" alt="no-product"/>
             <Title>Sorry !!! The product you are looking for is currently out of stock, please come back later.</Title>
             <Link to={'/'}>
             <Button>{`<<< BACK TO HOME PAGE <<<`}</Button>

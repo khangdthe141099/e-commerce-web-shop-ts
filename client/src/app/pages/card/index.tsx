@@ -192,7 +192,7 @@ function Cart() {
                   <>
                     <Product key={index}>
                       <ProductDetail>
-                        <Image src={product.img} />
+                        <Image src={product.img} alt=""/>
                         <Details>
                           <ProductName>
                             <b>{t('product_cart_product')}:</b> {product.title}

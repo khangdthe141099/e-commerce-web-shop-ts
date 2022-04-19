@@ -26,7 +26,7 @@ function CategoryItem(props: { category: Category }) {
 
     return (
         <Container>
-            <Image id="testImg" src={props.category.img}/>
+            <Image id="testImg" src={props.category.img} alt="category image"/>
             <Info id={props.category.id}>
                 <Title>{props.category.title}</Title>
                 <Link to={`/products/${props.category.cat}`}>

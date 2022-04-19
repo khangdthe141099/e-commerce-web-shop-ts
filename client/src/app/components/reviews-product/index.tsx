@@ -100,7 +100,7 @@ function ReviewsProduct() {
             return (
               <ProductItem key={index}>
                 <ProductItemTop>
-                  <ProductImage src={item?.img} />
+                  <ProductImage src={item?.img} alt=""/>
                   {
                     isSale && <SaleTag>{salePercent}% Sale</SaleTag>
                   }
@@ -113,6 +113,7 @@ function ReviewsProduct() {
                     onClick={handleScrollTop}
                     style={{color: 'white'}} 
                     to={`/product/${item?._id}`}>
+                    <span style={{display: 'none'}}>Hi</span>
                     <Visibility />
                     </Link>
                     </Icon2>

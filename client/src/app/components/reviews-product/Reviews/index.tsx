@@ -28,7 +28,7 @@ function Reviews() {
       <ReviewList>
         <ReviewItem>
           <ReviewItemLeft>
-            <Image src="https://i.pinimg.com/564x/f5/cb/57/f5cb5719b4fad10964d944918a55575e.jpg" />
+            <Image src="https://i.pinimg.com/564x/f5/cb/57/f5cb5719b4fad10964d944918a55575e.jpg" alt=""/>
             <Info>
               <Name>Dam Tuan Khang</Name>
               <DateCreate>15 04 2022</DateCreate>
@@ -49,7 +49,7 @@ function Reviews() {
         </ReviewItem>
         <ReviewItem>
           <ReviewItemLeft>
-            <Image src="https://i.pinimg.com/564x/f5/cb/57/f5cb5719b4fad10964d944918a55575e.jpg" />
+            <Image src="https://i.pinimg.com/564x/f5/cb/57/f5cb5719b4fad10964d944918a55575e.jpg" alt=""/>
             <Info>
               <Name>Dam Tuan Khang</Name>
               <DateCreate>15 04 2022</DateCreate>

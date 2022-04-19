@@ -49,7 +49,7 @@ function Slider() {
                     sliderItems.map((item, index) => (
                         <Slide bg={item.bg} key={index}>
                             <ImgContainer>
-                                <Image src={item.img} />
+                                <Image src={item.img} alt="slider image"/>
                             </ImgContainer>
 
                             <InfoContainer>

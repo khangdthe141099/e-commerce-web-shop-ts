@@ -114,7 +114,7 @@ function TopProducts() {
               return (
                 <Product key={index}>
                   <ImgContainer>
-                    <Image src={product.img} />
+                    <Image src={product.img} alt="top-product"/>
                   </ImgContainer>
 
                   <DiscountContainer>

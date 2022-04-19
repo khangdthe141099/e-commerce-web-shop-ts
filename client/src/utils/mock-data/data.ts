@@ -40,7 +40,7 @@ export const categories = [
     },
     {
         id: 3,
-        img: "https://i.pinimg.com/564x/00/8d/e4/008de48701d65e983eefcdd9cf9451b6.jpg",
+        img: "https://i.pinimg.com/564x/a5/81/06/a581064990186be3393ced5a97253590.jpg",
         title: "AIR POD",
         cat: "airpod"
     },

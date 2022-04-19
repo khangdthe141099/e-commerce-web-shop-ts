@@ -126,7 +126,7 @@ function SaleProducts() {
                                 return (
                                     <Product key={index}>
                                         <ImgContainer>
-                                            <Image src={product.img} />
+                                            <Image src={product.img} alt="sale-product"/>
                                         </ImgContainer>
 
                                         <DiscountContainer>
@@ -147,6 +147,7 @@ function SaleProducts() {
                                                 <Link
                                                     style={{ color: 'black' }}
                                                     to={`/product/${product._id}`}>
+                                                    <span style={{display: 'none'}}>Hi</span>
                                                     <SearchOutlined />
                                                 </Link>
                                             </Icon>
