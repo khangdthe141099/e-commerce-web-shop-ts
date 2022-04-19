@@ -4,6 +4,10 @@ export const Container = styled.div`
 
 `
 
+export const BreadCrumbsContainer = styled.div`
+    margin: 20px;
+`
+
 export const Title = styled.h1`
     margin: 20px;
 `

@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-
+    
 `
 
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+`
+
+export const BreadCrumbsContainer = styled.div`
+    align-self: flex-start;
 `
 
 export const TopWrapper = styled.div`
@@ -92,6 +97,7 @@ export const FilterContainer = styled.div`
 export const Filter = styled.div`
     display: flex;
     align-items: center;
+    cursor: pointer;
 `
 
 export const FilterTitle = styled.span`

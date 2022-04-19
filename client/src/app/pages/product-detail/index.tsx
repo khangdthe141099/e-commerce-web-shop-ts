@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Swal from 'sweetalert2'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useUser } from '../../../features/hook'
 import { addProduct } from '../../../features/cart/cartSlice'
 import { useDispatch } from 'react-redux'
@@ -49,7 +49,8 @@ import {
     GRight,
     Guarantee,
     GuaranteeIcon,
-    TopWrapper
+    TopWrapper,
+    BreadCrumbsContainer
 } from './product.elements'
 import Navbar from '../../components/navbar'
 import Announcement from '../../components/announcement'
@@ -57,6 +58,13 @@ import Footer from '../../components/footer'
 import { useTranslation } from "react-i18next";
 import ReviewsProduct from '../../components/reviews-product'
 import NewsLetter from '../../components/news-letter'
+import Typography from '@mui/material/Typography';
+import CustomSeparator  from '../../components/custom-separator'
+
+const handleClickBreadCrumbs = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    
+    console.info('You clicked a breadcrumb.');
+}
 
 function ProductDetail() {
     const [product, setProduct] = useState<any>()
@@ -78,8 +86,26 @@ function ProductDetail() {
 
     const location = useLocation()
     const id = location.pathname.split("/")[2]
+    const categoryPath = location.pathname.split("/")[1].charAt(0).toUpperCase() + location.pathname.split("/")[1].slice(1)
 
     const rating = product?.rating
+    //========= Custom Separator ===========
+    const breadcrumbs = [
+        <Link to="/" style={{color: 'gray', textDecoration: 'none'}}>
+        <Typography key="1" color="inherit">
+          Home
+        </Typography>
+        </Link>,
+        <Link to="/products" style={{color: 'gray', textDecoration: 'none'}}>
+        <Typography  key="2" color="inherit">
+          {categoryPath}
+        </Typography>
+        </Link>,
+        <Typography key="3" color="text.primary">
+          {product?.title}
+        </Typography>,
+      ];
+    //======================================
 
     //=========== SALE =================
     const isSale = product?.sale?.isSale
@@ -174,6 +200,11 @@ function ProductDetail() {
             <Navbar />
 
             <Wrapper>
+            <BreadCrumbsContainer>
+                <CustomSeparator>
+                    {breadcrumbs}
+                </CustomSeparator>
+            </BreadCrumbsContainer>
             <TopWrapper>
                 <ImgContainer >
                     <Image 

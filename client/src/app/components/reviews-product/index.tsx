@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Star } from '@mui/icons-material';
 import axios from 'axios';
+import { Link, useLocation } from "react-router-dom";
 import {
-  AddReview,
-  AddReviewDesc,
-  AddReviewRating,
-  AddReviewRatingTitle,
-  AddReviewTitle,
+  ShoppingCart,
+  Visibility,
+  Favorite,
+} from '@mui/icons-material';
+import {
   Container,
-  DateCreate,
-  Desc,
-  Image,
-  Info,
-  Name,
-  ReviewItem,
-  ReviewList,
-  ReviewsContainer,
-  StarRate,
   TabContainer,
   TabName,
   TabOption,
   TabQuantity,
-  ReviewItemLeft,
   IconContainer,
   Price,
   ProductImage,
@@ -30,26 +20,50 @@ import {
   ProductItemTop,
   ProductTitle,
   RelatedProductsContainer,
+  RelatedProductsTitle,
+  ProductsContainer,
+  Icon1,
+  Icon2,
+  Icon3,
+  SaleTag,
+  OriginPrice,
+  SalePrice
 } from './reviewsProduct.elements';
-import Form from './Form';
 import { tabs } from './data';
+import Reviews from './Reviews'
+import Description from './Description'
 
 function ReviewsProduct() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any>([]);
   const [tabId, setTabId] = useState(1);
+  const [product, setProduct] = useState<any>([]);
 
   const URL = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:5000/';
+
+  const location = useLocation()
+
+  const id = location.pathname.split("/")[2]
+
+  const productDesc = product.filter((item: any) => item?._id === id)
+
+
+  console.log(productDesc)
 
   const handleClick = (id: number) => {
     setTabId(id);
   };
+
+  const handleScrollTop = () => {
+    window.scrollTo(0, 0);
+  }
 
   useEffect(() => {
     const getProducts = async () => {
       try {
         const res = await axios.get(`${URL}product`);
 
-        setProducts(res.data.slice(0, 4));
+        setProducts(res.data.slice(27, 32));
+        setProduct(res.data)
       } catch (err) {
         console.log(err);
       }
@@ -72,94 +86,57 @@ function ReviewsProduct() {
       </TabContainer>
 
       {tabId === 1 ? (
-        'Description'
+        <Description desc={productDesc[0]?.desc}/>
       ) : (
-        <ReviewsContainer>
-          <ReviewList>
-            <ReviewItem>
-              <ReviewItemLeft>
-                <Image src="https://i.pinimg.com/564x/f5/cb/57/f5cb5719b4fad10964d944918a55575e.jpg" />
-                <Info>
-                  <Name>Dam Tuan Khang</Name>
-                  <DateCreate>15 04 2022</DateCreate>
-                  <Desc>Very Good!</Desc>
-                </Info>
-              </ReviewItemLeft>
-              <StarRate>
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-              </StarRate>
-            </ReviewItem>
-            <ReviewItem>
-              <ReviewItemLeft>
-                <Image src="https://i.pinimg.com/564x/f5/cb/57/f5cb5719b4fad10964d944918a55575e.jpg" />
-                <Info>
-                  <Name>Dam Tuan Khang</Name>
-                  <DateCreate>15 04 2022</DateCreate>
-                  <Desc>Very Good!</Desc>
-                </Info>
-              </ReviewItemLeft>
-              <StarRate>
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-              </StarRate>
-            </ReviewItem>
-          </ReviewList>
-
-          <AddReview>
-            <AddReviewTitle>Add A Review</AddReviewTitle>
-            <AddReviewDesc>
-              Your email address will not be published. Required fields are
-              marked *
-            </AddReviewDesc>
-            <AddReviewRating>
-              <AddReviewRatingTitle>Your Rating *</AddReviewRatingTitle>
-              <StarRate>
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-                <Star
-                  sx={{ fontSize: '17px', marginTop: '3px', color: '#ee4d2d' }}
-                />
-              </StarRate>
-            </AddReviewRating>
-
-            <Form />
-          </AddReview>
-        </ReviewsContainer>
+        <Reviews />
       )}
 
       <RelatedProductsContainer>
-        {products.map((item: any, index: any) => (
-          <ProductItem>
-            <ProductItemTop>
-              <ProductImage />
-              <IconContainer></IconContainer>
-            </ProductItemTop>
-
-            <ProductItemBottom>
-              <ProductTitle>{item.title}</ProductTitle>
-              <Price>{item.price} $</Price>
-            </ProductItemBottom>
-          </ProductItem>
-        ))}
+        <RelatedProductsTitle>Related Products</RelatedProductsTitle>
+        <ProductsContainer>
+          {products?.map((item: any, index: any) => {
+            const price = item?.price
+            const isSale = item?.sale.isSale
+            const salePercent = item?.sale.percent
+            const salePrice = price - price * (salePercent / 100)
+            return (
+              <ProductItem key={index}>
+                <ProductItemTop>
+                  <ProductImage src={item?.img} />
+                  {
+                    isSale && <SaleTag>{salePercent}% Sale</SaleTag>
+                  }
+                  <IconContainer>
+                    <Icon1>
+                    <ShoppingCart />
+                    </Icon1>
+                    <Icon2>
+                    <Link 
+                    onClick={handleScrollTop}
+                    style={{color: 'white'}} 
+                    to={`/product/${item?._id}`}>
+                    <Visibility />
+                    </Link>
+                    </Icon2>
+                    <Icon3>
+                    <Favorite />
+                    </Icon3>
+                  </IconContainer>
+                </ProductItemTop>
+  
+                <ProductItemBottom>
+                  <ProductTitle>{item?.title}</ProductTitle>
+                  <Price>
+                    {
+                      isSale && <SalePrice>{salePercent}$</SalePrice>
+                    }
+                    <OriginPrice>{salePrice}$</OriginPrice>
+                  </Price>
+                </ProductItemBottom>
+              </ProductItem>
+            )
+          })}
+        </ProductsContainer>
       </RelatedProductsContainer>
     </Container>
   );

@@ -14,6 +14,7 @@ export const TabContainer = styled.div`
     font-size: 22px;
     color: grey;
     margin-bottom: 40px;
+    cursor: pointer;
 `
 
 export const TabOption = styled.div`
@@ -124,33 +125,165 @@ export const AddReviewRatingTitle = styled.span`
 `
 export const RelatedProductsContainer = styled.div`
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 `
 
-export const ProductItem = styled.div`
-
+export const RelatedProductsTitle = styled.span`
+    font-size: 22px;
+    font-weight: bold;
 `
 
-export const ProductItemTop = styled.div`
-
-`
-
-export const ProductImage = styled.img`
-
+export const ProductsContainer = styled.div`
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
 `
 
 export const IconContainer = styled.div`
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: 0.5s;
+    cursor: pointer;
+`
 
+export const ProductImage = styled.img`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #d2d1d1;
+`
+
+export const SaleTag = styled.div` 
+    position: absolute;
+    background-color: #ff6229;
+    color: white;
+    padding: 1px 5px;
+    left: 0;
+    top: 0;
+    margin-top: 10px;
+    opacity: 0.8;
+`
+
+export const Icon1 = styled.div`
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    transition: 0.5s;
+    transform: translateY(18px);
+    &:hover{
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+`
+
+export const Icon2 = styled.div`
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    transition: 1s;
+    transform: translateY(18px);
+    &:hover{
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+`
+
+export const Icon3 = styled.div`
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    transition: 1.5s;
+    transform: translateY(18px);
+    &:hover{
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+`
+
+export const ProductItem = styled.div`
+    width: 220px;
+    height: 360px;
+    margin: 0px 20px;
+    display: flex;
+    flex-direction: column;
+`
+
+export const ProductItemTop = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 3;
+    &:hover ${IconContainer}{
+        opacity: 1;
+    };
+    &:hover ${Icon1}{
+        transform: translateY(0);
+    };
+    &:hover ${Icon2}{
+        transform: translateY(0);
+    };
+    &:hover ${Icon3}{
+        transform: translateY(0);
+    }
 `
 
 export const ProductItemBottom = styled.div`
-
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    padding: 10px;
 `
 
 export const ProductTitle = styled.div`
-
+    font-size: 20px;
+    font-weight: 500;
 `
 
 export const Price = styled.div`
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+`
+
+export const SalePrice = styled.div`
+    margin-right: 10px;
+    color: grey;
+    text-decoration: line-through;
+`
+
+export const OriginPrice = styled.div`
 
 `
 
