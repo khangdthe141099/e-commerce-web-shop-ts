@@ -104,6 +104,9 @@ function ProductList() {
           <Announcement />
           <Navbar />
           <Title>{cat}</Title>
+          <BreadCrumbsContainer>
+            <CustomSeparator>{breadcrumbs}</CustomSeparator>
+          </BreadCrumbsContainer>
           <FilterContainer>
             <Filter>
               <FilterText>{t('product_category_filter_product')}: </FilterText>
@@ -143,9 +146,6 @@ function ProductList() {
               </Select>
             </Filter>
           </FilterContainer>
-          <BreadCrumbsContainer>
-            <CustomSeparator>{breadcrumbs}</CustomSeparator>
-          </BreadCrumbsContainer>
           {isProducts ? (
             <Products cat={cat} filter={filter} sort={sort} />
           ) : (

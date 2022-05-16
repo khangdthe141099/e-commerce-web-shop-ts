@@ -243,7 +243,7 @@ function Navbar() {
 
           {/* Cart Layout */}
           <CartContainer>
-            <Link to={`/cart/${userId}`}>
+            <Link to={`/cart/${userId}`} style={{ textDecoration: 'none', color: 'black' }}>
               <Badge badgeContent={userProducts?.length} color="primary">
                 <ShoppingCartOutlined />
               </Badge>

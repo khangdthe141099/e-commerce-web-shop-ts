@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useUser } from '../../../features/hook'
 import { useDispatch } from 'react-redux'
 // import { fetchProduct } from '../../../features/apiCalls'
@@ -21,9 +21,10 @@ function Login() {
     const [username, setUserName] = useState('')
     const [password, setPassword] = useState('')
 
-    const { isFetching, error } = useUser()
+    const { isFetching, error, currentUser } = useUser()
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleUserName = (e: any) => {  
         const usernameInput = e.target.value
@@ -44,6 +45,10 @@ function Login() {
         //Dispatch action fetch product => display lazy load
         dispatch(fetchProductStart())
     }
+
+    useEffect(() => {
+        currentUser && navigate('/')
+    }, [currentUser, navigate])
 
 
     return (

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     height: 30px;
-    background-color: rgba(235, 153, 167, 0.9);
+    background-color: #92B4EC;
     color: white;
     display: flex;
     align-items: center;

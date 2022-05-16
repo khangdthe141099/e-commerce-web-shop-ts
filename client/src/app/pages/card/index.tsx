@@ -104,7 +104,11 @@ function Cart() {
       return total + subTotal
     }, 0)
 
-    setTotalPrice(totalP)
+
+    //Round number at most 2 decimal places
+    const roundTotal = Math.round((totalP + Number.EPSILON) * 100) / 100
+
+    setTotalPrice(roundTotal)
   }, [userProducts, userId])
 
   useEffect(() => {
@@ -184,7 +188,9 @@ function Cart() {
                 const salePrice = price - price * (salePercent / 100)
 
                 const totalPrice = product.quantity * price
+                const totalPriceRound = Math.round((totalPrice + Number.EPSILON) * 100) / 100
                 const totalSalePrice = product.quantity * salePrice
+                const totalSalePriceRound = Math.round((totalSalePrice + Number.EPSILON) * 100) / 100
 
                 const productId = product._id
 
@@ -221,7 +227,7 @@ function Cart() {
                             id: productId
                           })} />
                         </ProductAmountContainer>
-                        <ProductPrice>${isSale ? totalSalePrice : totalPrice}</ProductPrice>
+                        <ProductPrice>${isSale ? totalSalePriceRound : totalPriceRound}</ProductPrice>
                       </PriceDetail>
                       <ButtonRemove onClick={() => handleRemove(product._id)}>
                       <Delete color='error'/>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: 65px;
   position: sticky;
-  background-color: #fbeded;
+  background-color: #FFE69A;
   z-index: 100;
   top: 0;
   box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);

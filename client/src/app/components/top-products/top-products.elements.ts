@@ -29,7 +29,7 @@ export const Title = styled.p`
 
 export const Span = styled.span`
     font-size: 32px;
-    color: #ee4d2d;
+    color: black;
     font-weight: 700;
 `
 
@@ -40,7 +40,7 @@ export const Right = styled.div`
 export const Option = styled.p`
     display: flex;
     align-items: center;
-    color: #ee4d2d;
+    color: black;
     font-size: 20px;
 `
 
@@ -58,7 +58,7 @@ export const ProductContainer = styled.div`
 export const Arrow = styled.div`
     width: 30px;
     height: 30px;
-    background-color: #ee4d2d;
+    background-color: #fecc45;
     color: white;
     border-radius: 50%;
     display: ${(props: { direction?: string, slideIndex?: number }) => {
@@ -177,13 +177,13 @@ export const InfoContainer = styled.div`
 `
 
 export const Price = styled.p`
-    color: #ff0000;
+    color: black;
     font-size: 20px;
 `
 
 export const Sold = styled.div`
-    background-color: #ffbda6;
-    color: white;
+    background-color: #FFE69A;
+    color: black;
     width: 180px;
     display: flex;
     justify-content: center;

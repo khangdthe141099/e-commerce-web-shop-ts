@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
   product: productReducer,
-  active: activeReducer
+  active: activeReducer,
 })
 
 const persistConfig = {

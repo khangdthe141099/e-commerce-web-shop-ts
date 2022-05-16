@@ -38,6 +38,8 @@ function ReviewsProduct() {
   const [tabId, setTabId] = useState(1);
   const [product, setProduct] = useState<any>([]);
 
+  const randomNumber = Math.floor(Math.random() * 3)
+
   const URL = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:5000/';
 
   const location = useLocation()
@@ -46,6 +48,8 @@ function ReviewsProduct() {
 
   const productDesc = product.filter((item: any) => item?._id === id)
 
+  const productsRelatedAll = products.filter((item: any) => item?.categories[1] === productDesc[0]?.categories[1])
+  const productRelated = productsRelatedAll.slice(randomNumber, randomNumber + 5)
 
   const handleClick = (id: number) => {
     setTabId(id);
@@ -60,7 +64,7 @@ function ReviewsProduct() {
       try {
         const res = await axios.get(`${URL}product`);
 
-        setProducts(res.data.slice(27, 32));
+        setProducts(res.data);
         setProduct(res.data)
       } catch (err) {
         console.log(err);
@@ -92,7 +96,7 @@ function ReviewsProduct() {
       <RelatedProductsContainer>
         <RelatedProductsTitle>Related Products</RelatedProductsTitle>
         <ProductsContainer>
-          {products?.map((item: any, index: any) => {
+          {productRelated?.map((item: any, index: any) => {
             const price = item?.price
             const isSale = item?.sale.isSale
             const salePercent = item?.sale.percent
