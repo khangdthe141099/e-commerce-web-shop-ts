@@ -46,97 +46,29 @@ export const Input = styled.input`
   border: none;
 `;
 
-// export const NavbarList = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-left: 20px;
-// `
-
-// export const NavbarItem = styled.div`
-//   margin-right: 15px;
-//   font-weight: 500;
-// `
-
 export const NavigationNav = styled.div`
-  position: relative;
-  border-radius: 10px;
-  width: 300px;
-  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  margin-left: 20px;
 `;
 
 export const NavbarList = styled.ul`
   display: flex;
-  width: 350px;
+  align-items: center;
 `;
 
 export const NavbarItem = styled.li`
-  position: relative;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 35px;
-  width: 40px;
+  margin-right: -10px;
+  width: 104px;
   height: 40px;
-  z-index: 1;
-`;
-
-export const NavbarItemTop = styled.span`
-  position: relative;
-  display: block;
-  line-height: 75px;
-  font-size: 2em;
-  text-align: center;
-  transition: 0.5s;
-  transform: ${(props: { isActiveTop?: boolean }) => props.isActiveTop === true ? 'translateY(-10px)' : ''};
-`;
-
-export const NavbarItemBottom = styled.span`
-  position: absolute;
+  font-size: 18px;
   font-weight: 500;
-  font-size: 0.9em;
-  letter-spacing: 0.05em;
-  transition: 0.5s;
-  opacity: 0;
-  transform: translateY(15px);
-  opacity: ${(props: {isActiveBot?: boolean }) => props.isActiveBot === true ? '1' : ''};
-  /* transform: ${(props: {isActiveBot?: boolean }) => props.isActiveBot === true ? 'translateY(10px)' : ''}; */
 `;
-
-
-export const Indicator = styled.div`
-  position: absolute;
-  top: -28%;
-  left: 17px;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  background-color: #eca7b3e6;
-  border: 2px solid black;
-  transition: 0.5s;
-  transform: ${(props: {activeAll?: number}) => {
-    if(props.activeAll === 1){
-      return 'translateX(calc(75px * 0))'
-    }
-    if(props.activeAll === 2){
-      return 'translateX(calc(75px * 1))'
-    }
-    if(props.activeAll === 3){
-      return 'translateX(calc(75px * 2))'
-    }
-    if(props.activeAll === 4){
-      return 'translateX(calc(75px * 3))'
-    }
-  }};
-`
-
-
 
 // ========== End Left Component ==========
 // ========== Begin Center Component ==========
@@ -161,9 +93,11 @@ export const Right = styled.div`
 `;
 
 export const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   margin-left: 25px;
+  text-transform: uppercase;
+  font-weight: 500;
 `;
 
 export const NoCart = styled.div`

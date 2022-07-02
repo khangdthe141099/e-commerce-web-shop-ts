@@ -1,25 +1,34 @@
 import React from 'react';
 import {
-    Image,
-    Info,
-    Name,
-    NameContainer,
-    Wrapper
- } from './popper-items.elements'
+  Image,
+  Info,
+  Name,
+  NameContainer,
+  Wrapper,
+} from './popper-items.elements';
+import { Link } from 'react-router-dom';
 
-function PopperItems() {
+interface initProps {
+  data: any;
+}
+
+function PopperItems(props: initProps) {
+  const { data } = props
+
   return (
+    <Link to={`/product/${data?._id}`} style={{color: 'black', textDecoration: 'none' }}>
     <Wrapper>
       <Image
-        src="https://i.pinimg.com/564x/74/1a/6a/741a6a7c426f116e995c99acc9629c21.jpg"
-        alt="Khang"
+        src={data?.img}
+        alt={data?.desc}
       />
       <Info>
         <NameContainer>
-          <Name>Nguyen Van A</Name>
+          <Name>{data?.title}</Name>
         </NameContainer>
       </Info>
     </Wrapper>
+    </Link>
   );
 }
 

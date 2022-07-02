@@ -16,8 +16,11 @@ import {
     PageContainer
 } from './fashionNews.elements'
 import Pagination from '@mui/material/Pagination';
+import { useTranslation } from 'react-i18next';
 
 function FashionNews() {
+  const { t } = useTranslation();
+
     const [pageNumber, setPageNumber] = useState(1)
     const [pageData, setPageData] = useState<any>([])
 
@@ -41,7 +44,7 @@ function FashionNews() {
 
     return (
     <Container>
-      <Title>Fashion News</Title>
+      <Title>{t('new_products')}</Title>
       <NewsContainer>
         {pageData[0]?.map((item: any, index: any) => (
           <NewsItem key={index}>
@@ -53,7 +56,7 @@ function FashionNews() {
             <NewsTitle>{item.title}</NewsTitle>
             <Description>{item.description?.slice(0, 120)}</Description>
             <Option>
-                <OptionTitle>Read More</OptionTitle>
+                <OptionTitle>{t('read_more')}</OptionTitle>
             </Option>
           </NewsItem>
         ))}

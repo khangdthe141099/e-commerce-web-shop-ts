@@ -70,4 +70,5 @@ export const SearchText = styled.div`
 
 export const PopperContainer = styled.div`
     width: 430px;
+    height: 320px;
 `

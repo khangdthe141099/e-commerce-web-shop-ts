@@ -48,6 +48,7 @@ import {
   ViewComfy,
   KeyboardArrowDown,
   KeyboardArrowUp,
+  FilterList,
 } from '@mui/icons-material';
 import {
   Pagination,
@@ -59,23 +60,62 @@ import {
   FormControl,
 } from '@mui/material';
 import ListProducts from '../../components/products-list';
-import SearchComponent from './components/search'
+import SearchComponent from './components/search';
+import { useTranslation } from 'react-i18next';
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
+import { useProduct } from '../../../features/hook'
 
 function ProductsList() {
+  const { t } = useTranslation();
+
   const URL = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:5000/';
+
+  const arrSkeleton = Array.from(new Array(6));
+  const { isFetching } = useProduct()
 
   const [isTogglePrice, setIsTogglePrice] = useState<boolean>(false);
   const [rangePrice, setRangePrice] = useState<number[]>([0, 200]);
   const [isToggleStatus, setIsToggleStatus] = useState<boolean>(false);
   const [status, setStatus] = useState<string>('none');
 
-  const [activeSort, setActiveSort] = useState<boolean>(true);
+  const [activeSortAsc, setActiveSortAsc] = useState<boolean>(true);
+  const [activeSortDesc, setActiveSortDesc] = useState<boolean>(false);
   const [activeView1, setActiveView1] = useState<boolean>(true);
   const [activeView2, setActiveView2] = useState<boolean>(false);
 
   const [productsAll, setProductsAll] = useState([]);
   const [productSale, setProductSale] = useState([]);
   const [productsOrigin, setProductOrigin] = useState([]);
+
+  //================== PAGINATION ======================:
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageData, setPageData] = useState<any>([]);
+
+  const newsPerPage = activeView1 ? 6 : 8;
+  const numberOfPage =
+    status === 'none'
+      ? Math.ceil(productsAll?.length / newsPerPage)
+      : Math.ceil(productSale?.length / newsPerPage);
+
+  const handleChangePage = (event: any, value: any) => {
+    setPageNumber(value);
+  };
+
+  useEffect(() => {
+    const indexOfLastNews = pageNumber * newsPerPage;
+    const indexOfFirstNews = indexOfLastNews - newsPerPage;
+    const data = [];
+    if (pageNumber >= 1) {
+      status === 'none'
+        ? data.push(productsAll.slice(indexOfFirstNews, indexOfLastNews))
+        : data.push(productSale.slice(indexOfFirstNews, indexOfLastNews));
+    }
+
+    setPageData(data);
+  }, [productsAll, newsPerPage, pageNumber, productSale, status]);
+
+  //====================================================
 
   //Get pathname:
   const location = useLocation();
@@ -107,8 +147,13 @@ function ProductsList() {
 
   //Hanle active sort and view:
   const handleClickItem = (item: string) => {
-    if (item === 'sort') {
-      setActiveSort(prev => !prev);
+    if (item === 'sortAsc') {
+      setActiveSortAsc(true);
+      setActiveSortDesc(false);
+    }
+    if (item === 'sortDesc') {
+      setActiveSortDesc(true);
+      setActiveSortAsc(false);
     }
     if (item === 'view1') {
       setActiveView1(true);
@@ -163,24 +208,26 @@ function ProductsList() {
     let isMounted = true;
 
     if (isMounted) {
-      if (activeSort === true) {
-        const ascProduct = productsAll.sort((a: any, b: any): any =>
-          sortByPriceAndSalePrice(a, b, 'asc'),
-        );
-        setProductsAll(ascProduct);
+      if (activeSortAsc === false) {
+        setProductsAll(prev => {
+          return [...prev].sort((a: any, b: any): any =>
+            sortByPriceAndSalePrice(a, b, 'desc'),
+          );
+        });
       }
-      if (activeSort === false) {
-        const descProduct = productsAll.sort((a: any, b: any): any =>
-          sortByPriceAndSalePrice(a, b, 'desc'),
-        );
-        setProductsAll(descProduct);
+      if (activeSortAsc === true) {
+        setProductsAll(prev => {
+          return [...prev].sort((a: any, b: any): any =>
+            sortByPriceAndSalePrice(a, b, 'asc'),
+          );
+        });
       }
     }
 
     return () => {
       isMounted = false;
     };
-  }, [productsAll, activeSort]);
+  }, [activeSortAsc]);
 
   //Get all product by category (Origin):
   useEffect(() => {
@@ -268,8 +315,13 @@ function ProductsList() {
       <Wrapper>
         <TopWrapper>
           <TopWrapperLeft>
-            <Title>Iphone</Title>
-            <Detail>Showing 6 products out of 19 products</Detail>
+            <Title>{cat?.toUpperCase()}</Title>
+            <Detail>
+              {t('product_list_header_title_1')}{' '}
+              {status === 'none' ? productsAll.length : productSale.length}{' '}
+              {t('product_list_header_title_2')} {productsOrigin.length}{' '}
+              {t('product_list_header_title_3')}
+            </Detail>
           </TopWrapperLeft>
           <BannerImg
             src="https://sado.vn/images/news/2021/05/05/large/what-to-expect-2021-feature_1620181077.jpg"
@@ -281,14 +333,20 @@ function ProductsList() {
           <BodyWrapperLeft>
             <PriceFilter>
               <PriceToggle onClick={() => handleTogglePriceFilter('price')}>
-                <PriceToggleTitle>Price</PriceToggleTitle>
+                <PriceToggleTitle>
+                  {t('product_list_filter_price')}
+                </PriceToggleTitle>
                 {isTogglePrice ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
               </PriceToggle>
 
               <PriceBody toggle={isTogglePrice}>
                 <PriceBodyTop>
-                  <From>From ${rangePrice[0]}</From>
-                  <To>To ${rangePrice[1]}</To>
+                  <From>
+                    {t('product_list_filter_price_from')} ${rangePrice[0]}
+                  </From>
+                  <To>
+                    {t('product_list_filter_price_to')} ${rangePrice[1]}
+                  </To>
                 </PriceBodyTop>
                 <Box sx={{ width: '90%', padding: '10px' }}>
                   <Slider
@@ -302,15 +360,21 @@ function ProductsList() {
                   />
                 </Box>
                 <ApplyFilterBtn onClick={handleFilterPriceInRange}>
-                  Apply Filter
+                  {t('product_list_filter_price_apply')}
                 </ApplyFilterBtn>
-                <PriceDetail>Result: 15 products</PriceDetail>
+                <PriceDetail>
+                  {t('product_list_filter_price_result')}:{' '}
+                  {status === 'none' ? productsAll.length : productSale.length}{' '}
+                  {t('product_list_header_title_3')}
+                </PriceDetail>
               </PriceBody>
             </PriceFilter>
 
             <StatusFilter>
               <StatusToggle onClick={() => handleTogglePriceFilter('status')}>
-                <StatusToggleTitle>Status</StatusToggleTitle>
+                <StatusToggleTitle>
+                  {t('product_list_filter_status')}
+                </StatusToggleTitle>
                 {isToggleStatus ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
               </StatusToggle>
 
@@ -343,16 +407,16 @@ function ProductsList() {
             <BodyWrapperRightTop>
               <BodyWrapperRightTopLeft>
                 <SortedBy>
-                  <SortedByTitle>SORTED BY:</SortedByTitle>
-                  <SortBackground
-                    activeColor={activeSort}
-                    onClick={() => handleClickItem('sort')}
-                  >
-                    <Sort />
+                  <SortedByTitle>{t('product_list_sort_by')}:</SortedByTitle>
+                  <SortBackground activeColor={activeSortAsc}>
+                    <Sort onClick={() => handleClickItem('sortAsc')} />
+                  </SortBackground>
+                  <SortBackground activeColor={activeSortDesc}>
+                    <FilterList onClick={() => handleClickItem('sortDesc')} />
                   </SortBackground>
                 </SortedBy>
                 <DisplayBy>
-                  <SortedByTitle>VIEW:</SortedByTitle>
+                  <SortedByTitle>{t('product_list_view')}:</SortedByTitle>
                   <DisplayBackground
                     activeColor={activeView1}
                     onClick={() => handleClickItem('view1')}
@@ -369,31 +433,42 @@ function ProductsList() {
               </BodyWrapperRightTopLeft>
 
               {/* Begin Search */}
-              
-              {/* End Search */}
               <SearchComponent />
+              {/* End Search */}
             </BodyWrapperRightTop>
 
             <BodyWrapperRightBottom>
-              {status === 'none'
-                ? productsAll?.map((item: any, index: number) => (
+              {!isFetching
+                ? pageData[0]?.map((item: any, index: number) => (
                     <ListProducts
                       item={item}
                       keyProps={index}
                       activeView1={activeView1}
                     />
                   ))
-                : productSale?.map((item: any, index: number) => (
-                    <ListProducts
-                      item={item}
-                      keyProps={index}
-                      activeView1={activeView1}
-                    />
+                : arrSkeleton.map((item: any, index: number) => (
+                    <Stack
+                      sx={{
+                        width: '300px',
+                        marginBottom: '30px',
+                        marginRight: '18px',
+                      }}
+                      spacing={1}
+                    >
+                      <Skeleton variant="rectangular" height={280} />
+                      <Skeleton animation="wave" />
+                      <Skeleton animation="wave" />
+                    </Stack>
                   ))}
             </BodyWrapperRightBottom>
 
             <PageContainer>
-              <Pagination count={5} showFirstButton showLastButton />
+              <Pagination
+                count={numberOfPage}
+                showFirstButton
+                showLastButton
+                onChange={handleChangePage}
+              />
             </PageContainer>
           </BodyWrapperRight>
         </BodyWrapper>

@@ -19,8 +19,12 @@ import {
 import { Star } from '@mui/icons-material';
 import Form from '../Form/index';
 import Rating from '@mui/material/Rating';
+import { useTranslation } from 'react-i18next';
 
 function Reviews() {
+  //Multiple language:
+  const { t } = useTranslation();
+
   const [value, setValue] = useState(2);
 
   return (
@@ -71,12 +75,12 @@ function Reviews() {
       </ReviewList>
 
       <AddReview>
-        <AddReviewTitle>Add A Review</AddReviewTitle>
+        <AddReviewTitle>{t('product_detail_add_a_review')}</AddReviewTitle>
         <AddReviewDesc>
-          Your email address will not be published. Required fields are marked *
+          {t('product_detail_marked')}
         </AddReviewDesc>
         <AddReviewRating>
-          <AddReviewRatingTitle>Your Rating *</AddReviewRatingTitle>
+          <AddReviewRatingTitle>{t('product_detail_your_rating')}</AddReviewRatingTitle>
           <StarRate>
             <Rating
               name="simple-controlled"

@@ -1,8 +1,12 @@
 import React from 'react';
 import './style.css';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 function Form() {
+  //Multiple language:
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -14,7 +18,7 @@ function Form() {
   return (
       <form onSubmit={handleSubmit(onSubmit)} className="form-group">
         <div className="form-item">
-          <span className="form-title">Your review *</span>
+          <span className="form-title">{t('product_detail_your_review')}</span>
           <input
             className={"form-input"} 
             type="textarea"
@@ -32,7 +36,7 @@ function Form() {
           />
         </div>
 
-        <input className="form-submit" type="submit" value="Submit"/>
+        <input className="form-submit" type="submit" value={'Submit'}/>
       </form>
   );
 }

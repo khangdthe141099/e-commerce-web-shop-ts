@@ -158,34 +158,9 @@ export const Image4 = styled.img`
 
 export const Info = styled.div`
     position: absolute;
-    top: ${(props: {info?: number}) => {
-        if(props.info === 1){
-            return '35%'
-        }
-        if(props.info === 2){
-            return '40%'
-        }
-        if(props.info === 3){
-            return '40%'
-        }
-        if(props.info === 4){
-            return '45%'
-        }
-    }};
-    left: ${(props: {info?: number}) => {
-        if(props.info === 1){
-            return '25%'
-        }
-        if(props.info === 2){
-            return '42%'
-        }
-        if(props.info === 3){
-            return '38%'
-        }
-        if(props.info === 4){
-            return '32%'
-        }
-    }};
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -221,6 +196,7 @@ export const Info = styled.div`
         }
     }};
     }
+    text-align: center;
 `
 
 export const Title = styled.div`

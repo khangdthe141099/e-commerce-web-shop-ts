@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { logoutSuccess } from '../../../features/user/userSlice';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../../../features/hook';
 import { useCart } from '../../../features/hook';
-import {  Search, 
-          ShoppingCartOutlined,
-          Category,
-          Home,
-          Newspaper,
-          ContactPage
-            } from '@mui/icons-material';
+import {
+  Search,
+  ShoppingCartOutlined,
+  Category,
+  Home,
+  Newspaper,
+  ContactPage,
+} from '@mui/icons-material';
 import { removeProduct } from '../../../features/cart/cartSlice';
 import nocart from '../../../assets/images/no_cart.png';
 import { Badge } from '@mui/material';
@@ -47,9 +48,6 @@ import {
   NavbarList,
   NavbarItem,
   NavigationNav,
-  NavbarItemBottom,
-  NavbarItemTop,
-  Indicator
 } from './navbar.elements';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -74,13 +72,12 @@ i18n
       caches: ['cookie'],
     },
     backend: {
-      loadPath: '/locales/{{lng}}/translation.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
     react: { useSuspense: false },
   });
 
 function Navbar() {
- 
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -119,26 +116,26 @@ function Navbar() {
 
   //handle active navbar
   const handleActive = (props: any) => {
-    setActiveAll(props)
+    setActiveAll(props);
 
-    setActive1(false)
-    setActive2(false)
-    setActive3(false)
-    setActive4(false)
-    if(props === 1){
-      setActive1(true)
+    setActive1(false);
+    setActive2(false);
+    setActive3(false);
+    setActive4(false);
+    if (props === 1) {
+      setActive1(true);
     }
-    if(props === 2){
-      setActive2(true)
-      navigate('/products')
+    if (props === 2) {
+      setActive2(true);
+      navigate('/products');
     }
-    if(props === 3){
-      setActive3(true)
+    if (props === 3) {
+      setActive3(true);
     }
-    if(props === 4){
-      setActive4(true)
+    if (props === 4) {
+      setActive4(true);
     }
-  }
+  };
 
   //Lấy ra danh sách sản phẩm tương ứng với user:
   useEffect(() => {
@@ -170,37 +167,18 @@ function Navbar() {
           </Language>
           <NavigationNav>
             <NavbarList>
-            <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
-              <NavbarItem onClick={() => handleActive(1)}>               
-                  <NavbarItemTop isActiveTop={active1}>
-                    <Home style={{fontSize: '30px'}}/>
-                  </NavbarItemTop>
-                  <NavbarItemBottom isActiveBot={active1}>HOME</NavbarItemBottom>
-              </NavbarItem>
-              </Link>
-              <NavbarItem onClick={() => handleActive(2)}>           
-                  <NavbarItemTop isActiveTop={active2}>
-                    <Category style={{fontSize: '30px'}}/>
-                  </NavbarItemTop>
-                  <NavbarItemBottom isActiveBot={active2}>PRODUCTS</NavbarItemBottom>               
-              </NavbarItem>
               <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
-              <NavbarItem onClick={() => handleActive(3)}>   
-                  <NavbarItemTop isActiveTop={active3}>
-                    <Newspaper style={{fontSize: '30px'}}/>
-                  </NavbarItemTop>
-                  <NavbarItemBottom isActiveBot={active3}>NEWS</NavbarItemBottom>
-              </NavbarItem>
+                <NavbarItem>{t('nav_home')}</NavbarItem>
               </Link>
               <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
-              <NavbarItem onClick={() => handleActive(4)}>              
-                  <NavbarItemTop isActiveTop={active4}>
-                    <ContactPage style={{fontSize: '30px'}}/>
-                  </NavbarItemTop>
-                  <NavbarItemBottom isActiveBot={active4}>CONTACT</NavbarItemBottom>
-              </NavbarItem>
+                <NavbarItem>{t('nav_products')}</NavbarItem>
               </Link>
-              <Indicator activeAll={activeAll}></Indicator>
+              <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+                <NavbarItem>{t('nav_news')}</NavbarItem>
+              </Link>
+              <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+                <NavbarItem>{t('nav_about')}</NavbarItem>
+              </Link>
             </NavbarList>
           </NavigationNav>
         </Left>
@@ -243,7 +221,10 @@ function Navbar() {
 
           {/* Cart Layout */}
           <CartContainer>
-            <Link to={`/cart/${userId}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <Link
+              to={`/cart/${userId}`}
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
               <Badge badgeContent={userProducts?.length} color="primary">
                 <ShoppingCartOutlined />
               </Badge>

@@ -82,6 +82,7 @@ export const SortBackground = styled.div`
     align-items: center;
     padding: 3px;
     cursor: pointer;
+    margin-right: 8px;
 `
 
 export const BodyWrapperRightTopLeft = styled.div`

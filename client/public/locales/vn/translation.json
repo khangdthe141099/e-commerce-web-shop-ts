@@ -3,9 +3,16 @@
     "sign_in": "ĐĂNG NHẬP",
     "log_out": "ĐĂNG XUẤT",
     "welcome": "Chào mừng",
+    "nav_home": "Trang Chủ",
+    "nav_products": "Sản Phẩm",
+    "nav_news": "Tin Tức",
+    "nav_about": "Về chúng tôi",
+    "nav_super_deal": "Ưu đãi siêu khủng! Giao hàng miễn phí cho các đơn đặt hàng trên $ 50",
+
     "shop_gifts": "Mua quà",
     "shop_gifts_title": "Hãy mua một món quà của bạn",
     "shop_now": "MUA NGAY",
+
     "see_all": "Xem tất cả",
     "top_search": "Tìm kiếm hàng đầu",
     "news_lettes": "Thư Mới",
@@ -29,13 +36,21 @@
     "remove_btn": "Xóa",
     "view_cart_btn": "Xem Giỏ Hàng",
 
-    "product_category_filter_product": "Lọc Sản Phẩm",
-    "product_category_filter_color": "Màu",
-    "product_category_filter_size": "Kích cỡ",
-    "product_category_sort_product": "Sắp xếp sản phẩm",
-    "product_category_sort_newest": "Mới nhất",
-    "product_category_sort_price_asc": "Giá (Tăng dần)",
-    "product_category_sort_price_desc": "Giá (Giảm dần)",
+    "product_list_header_title_1": "Hiển thị",
+    "product_list_header_title_2": "sản phẩm trong số",
+    "product_list_header_title_3": "sản phẩm",
+    "product_list_filter_price": "Giá",
+    "product_list_filter_price_from": "Từ",
+    "product_list_filter_price_to": "Đến",
+    "product_list_filter_price_apply": "Áp dụng bộ lọc",
+    "product_list_filter_price_result": "Kết quả",
+    "product_list_filter_status": "Trạng thái",
+    "product_list_filter_status_none": "Không",
+    "product_list_filter_status_sale": "Giảm giá",
+    "product_list_sort_by": "SẮP XẾP THEO",
+    "product_list_view": "CHẾ ĐỘ XEM",
+    "product_list_search_products": "Tìm kiếm sản phẩm",
+    "product_list_search_btn": "Tìm",
 
     "product_detail_evaluate": "Đánh giá",
     "product_detail_sold": "Đã bán",
@@ -48,6 +63,14 @@
     "product_detail_btn_buy_now": "Mua ngay",
     "product_detail_guarantee": "Đảm bảo",
     "product_detail_money_back": "3 ngày trả hàng | hoàn tiền",
+    "product_detail_description": "Mô Tả",
+    "product_detail_review": "Đánh Giá",
+    "product_detail_related_products": "Sản phẩm liên quan",
+    "product_detail_add_a_review": "Thêm một đánh giá",
+    "product_detail_marked": "Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu *",
+    "product_detail_your_rating": "Xếp hạng *",
+    "product_detail_your_review": "Đánh giá *",
+    "product_detail_submit_btn": "Gửi",
 
     "product_cart_your_bag": "TÚI CỦA BẠN",
     "product_cart_continue_shopping": "TIẾP TỤC MUA SẮM",
@@ -61,5 +84,14 @@
     "product_cart_sub_total": "Tổng phụ",
     "product_cart_estimate_shipping": "Phí ship",
     "product_cart_shipping_discount": "Giảm giá",
-    "product_cart_total": "TỔNG"
+    "product_cart_total": "TỔNG",
+
+    "new_products": "Sản Phẩm Mới",
+    "free_ship_all_order": "Miễn phí vận chuyển trên tất cả các đơn hàng",
+
+    "load_more": "Tải Thêm",
+
+    "products_news": "Sản Phẩm Mới",
+    "read_more": "Đọc Thêm",
+    "by_news": "Bởi"
 }

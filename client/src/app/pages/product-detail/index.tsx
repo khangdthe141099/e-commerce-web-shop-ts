@@ -66,12 +66,15 @@ import ReviewsProduct from '../../components/reviews-product';
 import NewsLetter from '../../components/news-letter';
 import Typography from '@mui/material/Typography';
 import CustomSeparator from '../../components/custom-separator';
+import { useProduct } from '../../../features/hook'
+import Loading from '../../components/loading'
 
 function ProductDetail() {
   const [product, setProduct] = useState<any>();
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
+  const [isFetching, setIsFetching] = useState(true);
 
   const URL = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:5000/';
 
@@ -194,8 +197,19 @@ function ProductDetail() {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsFetching(false)
+    }, 1000)
+  }, [])
+
   return (
-    <Container>
+    <>
+    {
+      isFetching 
+      ? <Loading /> 
+      : (
+        <Container>
       <Announcement />
       <Navbar />
 
@@ -330,6 +344,9 @@ function ProductDetail() {
       <NewsLetter />
       <Footer />
     </Container>
+      )
+    }
+    </>
   );
 }
 
