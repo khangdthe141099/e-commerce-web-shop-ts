@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-//import { selectProduct } from './product/selectors'
+import { selectProduct } from './product/selectors'
 import { selectUser } from './user/selectors' 
 
 
@@ -8,7 +8,7 @@ export const useUser = () => {
     return user
 }
 
-// export const useProduct = () => {
-//     const product = useSelector(selectProduct)
-//     return product
-// }
+export const useProduct = () => {
+    const product = useSelector(selectProduct)
+    return product
+}

@@ -4,21 +4,21 @@ import createSagaMiddleware from 'redux-saga'
 import {
   persistStore,
   persistReducer,
-  // FLUSH,
-  // REHYDRATE,
-  // PAUSE,
-  // PERSIST,
-  // PURGE,
-  // REGISTER,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import userReducer from '../features/user/userSlice'
-//import productReducer from '../features/product/productSlice'
+import productReducer from '../features/product/productSlice'
 import rootSaga from '../features/saga'
 
 const rootReducer = combineReducers({
   user: userReducer,
-  //product: productReducer,
+  product: productReducer,
 })
 
 const persistConfig = {
@@ -35,10 +35,10 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      // serializableCheck: {
-      //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      // },
-      serializableCheck: false,
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+      // serializableCheck: false,
     }).concat(sagaMiddleware),
 });
 

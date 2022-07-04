@@ -14,7 +14,11 @@ class AuthController {
             address: req.body.address,
             username: req.body.username,
             email: req.body.email,
-            password: CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString()
+            password: CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString(),
+            isAdmin: req.body.isAdmin,
+            img: req.body.img,
+            phone: req.body.phone,
+            gender: req.body.gender
         })
 
         try{

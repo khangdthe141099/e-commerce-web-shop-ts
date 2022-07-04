@@ -40,10 +40,10 @@ class UserController {
     }
 
     getAllUser = async (req, res, next) => {
-        const query = req.query.new
+        const query = req.query.new //If query new = true => get new user
         try {
             const user = query ? 
-            await User.find().sort({ _id: -1 }).limit(1) : 
+            await User.find().sort({ _id: -1 }).limit(5) : 
             await User.find()
             res.status(200).json(user)
         }catch (err){
