@@ -16,6 +16,7 @@ import cartReducer from '../features/cart/cartSlice'
 import userReducer from '../features/user/userSlice'
 import productReducer from '../features/product/productSlice'
 import activeReducer from '../features/active/activeSlice'
+import languageReducer from '../features/language/languageSlice'
 import rootSaga from '../features/saga'
 
 const rootReducer = combineReducers({
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   product: productReducer,
   active: activeReducer,
+  language: languageReducer,
 })
 
 const persistConfig = {

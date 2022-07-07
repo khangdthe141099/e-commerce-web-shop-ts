@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { logoutSuccess } from '../../../features/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -49,7 +49,7 @@ import {
   NavbarItem,
   NavigationNav,
 } from './navbar.elements';
-import i18n from 'i18next';
+import i18n, { use } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
@@ -58,6 +58,9 @@ import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { Products } from '../../../types';
 import { navbar } from '../../../utils/mock-data/data';
+import { useLanguage } from '../../../features/hook';
+import { setTypeLanguage } from '../../../features/language/languageSlice';
+import autoAnimate from '@formkit/auto-animate';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -83,14 +86,6 @@ function Navbar() {
   const navigate = useNavigate();
 
   const [userProducts, setUserProducts] = useState<any>();
-  const [typeLanguage, setTypeLanguage] = useState('en');
-
-  const [active1, setActive1] = useState(true);
-  const [active2, setActive2] = useState(false);
-  const [active3, setActive3] = useState(false);
-  const [active4, setActive4] = useState(false);
-
-  const [activeAll, setActiveAll] = useState(1);
 
   const { products } = useCart();
 
@@ -99,10 +94,12 @@ function Navbar() {
 
   const dispatch = useDispatch();
 
+  const { type } = useLanguage();
+
   const handleChangeLanguage = (code: string) => {
     i18next.changeLanguage(code);
 
-    setTypeLanguage(code);
+    dispatch(setTypeLanguage(code));
   };
 
   const handleLogout = () => {
@@ -112,29 +109,6 @@ function Navbar() {
 
   const handleRemove = (id: string) => {
     dispatch(removeProduct(id));
-  };
-
-  //handle active navbar
-  const handleActive = (props: any) => {
-    setActiveAll(props);
-
-    setActive1(false);
-    setActive2(false);
-    setActive3(false);
-    setActive4(false);
-    if (props === 1) {
-      setActive1(true);
-    }
-    if (props === 2) {
-      setActive2(true);
-      navigate('/products');
-    }
-    if (props === 3) {
-      setActive3(true);
-    }
-    if (props === 4) {
-      setActive4(true);
-    }
   };
 
   //Lấy ra danh sách sản phẩm tương ứng với user:
@@ -150,6 +124,15 @@ function Navbar() {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   };
 
+    //============= ANIMATION =============
+    const parent = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      parent.current &&
+        autoAnimate(parent.current);
+    }, [parent]);
+    //======================================
+
   return (
     <Container>
       <Wrapper>
@@ -157,7 +140,7 @@ function Navbar() {
           <Language>
             {languages.map(({ code, name, country_code }) => (
               <LanguageOption
-                disabled={typeLanguage === code ? true : false}
+                disabled={type === code}
                 onClick={() => handleChangeLanguage(code)}
                 key={country_code}
               >
@@ -170,13 +153,22 @@ function Navbar() {
               <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
                 <NavbarItem>{t('nav_home')}</NavbarItem>
               </Link>
-              <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+              <Link
+                to={'/products'}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
                 <NavbarItem>{t('nav_products')}</NavbarItem>
               </Link>
-              <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+              <Link
+                to={'/news'}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
                 <NavbarItem>{t('nav_news')}</NavbarItem>
               </Link>
-              <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+              <Link
+                to={'/about'}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
                 <NavbarItem>{t('nav_about')}</NavbarItem>
               </Link>
             </NavbarList>
@@ -247,7 +239,7 @@ function Navbar() {
                       const category = product.categories[1];
 
                       return (
-                        <ProductItem key={index}>
+                        <ProductItem key={index} ref={parent}>
                           <ProductImg src={product.img} alt="" />
                           <ProductCenter>
                             <ProductName>{product.title}</ProductName>

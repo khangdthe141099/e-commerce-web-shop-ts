@@ -161,6 +161,8 @@ function ProductDetail() {
       if (currentUser) {
         createCart();
 
+        dispatch(addProduct({ ...product, quantity, color, size, userId }));
+
         //Display Sweet Alert after add product to cart successfully:
         Swal.fire(
           'Add product successfully!',
@@ -185,11 +187,6 @@ function ProductDetail() {
     } catch (err) {
       console.log(err);
     }
-
-    //dispatch action
-    if (currentUser) {
-      dispatch(addProduct({ ...product, quantity, color, size, userId }));
-    }
   };
 
   //Auto scroll top when page loaded:
@@ -202,6 +199,7 @@ function ProductDetail() {
       setIsFetching(false)
     }, 1000)
   }, [])
+
 
   return (
     <>

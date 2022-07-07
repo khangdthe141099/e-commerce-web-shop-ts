@@ -1,7 +1,7 @@
 export const sliderItems = [
     {
         id: 1,
-        img: "https://i.pinimg.com/564x/f8/a7/69/f8a76959907c024e2282ac082be92eba.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/sliderItems1.jpg?alt=media&token=fc7de79b-6ddc-4a56-ae24-8e7b8ce856b5",
         title: "Shop gifts",
         desc: "Last-minute gifts for every last one",
         bg: "f5fafd",
@@ -9,7 +9,7 @@ export const sliderItems = [
     },
     {
         id: 2,
-        img: "https://i.pinimg.com/564x/b4/b7/ed/b4b7edb6681ed6cfaa6306bf8df3a246.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/sliderItems2.jpg?alt=media&token=7b49a5e3-3190-495b-89a6-b70e5d1b8d39",
         title: "Shop gifts",
         desc: "Last-minute gifts for every last one",
         bg: "f5fafd",
@@ -17,7 +17,7 @@ export const sliderItems = [
     },
     {
         id: 3,
-        img: "https://i.pinimg.com/564x/c1/83/96/c18396e426e362becd9f1a2b561da7fb.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/sliderItems3.jpg?alt=media&token=007dcfb3-79e3-410f-b22b-51b5a10da55f",
         title: "Shop gifts",
         desc: "Last-minute gifts for every last one",
         bg: "f5fafd",
@@ -28,25 +28,25 @@ export const sliderItems = [
 export const categories = [
     {
         id: 1,
-        img: "https://i.pinimg.com/564x/5a/10/1e/5a101ea98b3f5f51ff5a98cd2a80f6a2.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/categories1.jpg?alt=media&token=aac9bf8c-17db-4d98-8561-19a9a8892243",
         title: "IPHONE",
         cat: "iphone"
     },
     {
         id: 2,
-        img: "https://i.pinimg.com/564x/f7/10/a7/f710a74c6265b622bda4e7471b41562f.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/categories2.jpg?alt=media&token=6e545e21-fd63-4e7d-a5ce-e42a64691eb8",
         title: "APPLE WATCH",
         cat: "watch"
     },
     {
         id: 3,
-        img: "https://i.pinimg.com/564x/a5/81/06/a581064990186be3393ced5a97253590.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/categories3.jpg?alt=media&token=a8f6fe28-e2b9-458c-85e3-ae0d017c5995",
         title: "AIR POD",
         cat: "airpod"
     },
     {
         id: 4,
-        img: "https://i.pinimg.com/564x/e2/16/d5/e216d5e9d83952039473de4a918b0f8b.jpg",
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/categories4.jpg?alt=media&token=e18c34af-04e6-4a97-95b5-3e2395565472",
         title: "MAC BOOK",
         cat: "macbook"
     },
@@ -55,35 +55,35 @@ export const categories = [
 export const popularProducts = [
     {
         id: 1,
-        img: "https://i.pinimg.com/564x/4d/3c/a3/4d3ca3a5a82eb16ee022f5406ee4c01c.jpg"
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/popularProducts1.jpg?alt=media&token=6487f933-2484-44a6-8ed3-797cb22bfa5b"
     },
     {
         id: 2,
-        img: "https://i.pinimg.com/564x/a0/84/d7/a084d7d0ce1d9ee119533f9a4aff06e1.jpg"
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/popularProducts2.jpg?alt=media&token=00eec40c-7eac-4628-bd72-729d2a4407e9"
     },
     {
         id: 3,
-        img: "https://i.pinimg.com/564x/08/a2/15/08a215531120ff8fa3dc73fb35ae3c6b.jpg"
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/popularProducts3.jpg?alt=media&token=7b2c45a4-8c53-444d-8a40-34a44f5e6e98"
     },
     {
         id: 4,
-        img: "https://i.pinimg.com/564x/aa/16/71/aa16718626949f57af9ead492b8888ce.jpg"
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/popularProducts4.jpg?alt=media&token=03095c0d-e2d6-4eff-8569-902964735ae3"
     },
     {
         id: 5,
-        img: "https://i.pinimg.com/564x/2b/0c/0e/2b0c0e14e450ec61c11f0f25e6017f89.jpg"
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/popularProducts5.jpg?alt=media&token=bcf9744a-9e3f-497c-b1a3-b8015e1ed6e0"
     },
     {
         id: 6,
-        img: "https://i.pinimg.com/564x/a5/37/35/a5373517b9dd9438e95c0cd28ef4bbc8.jpg"
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/popularProducts6.jpg?alt=media&token=8740e1ef-6653-4864-90b4-685639e49722"
     },
     {
         id: 7,
-        img: "https://i.pinimg.com/564x/5d/9b/0d/5d9b0d41f76cd55aae39bb8022f5928e.jpg"
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/popularProducts7.jpg?alt=media&token=cba5c143-c694-4c5e-a7b9-a09fb2f8663d"
     },
     {
         id: 8,
-        img: "https://i.pinimg.com/564x/8c/a4/cd/8ca4cdd64357ecddbf1f4c9109800ac3.jpg"
+        img: "https://firebasestorage.googleapis.com/v0/b/ecommerce-app-6c0e7.appspot.com/o/popularProducts8.jpg?alt=media&token=83ffdec5-4a51-492a-b638-7747bc15d4b7"
     },
 ]
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCart, Visibility, Favorite } from '@mui/icons-material';
@@ -29,6 +29,7 @@ import { tabs } from './data';
 import Reviews from './Reviews';
 import Description from './Description';
 import { useTranslation } from 'react-i18next';
+import autoAnimate from '@formkit/auto-animate';
 
 function ReviewsProduct() {
   //Multiple language:
@@ -79,6 +80,15 @@ function ReviewsProduct() {
     getProducts();
   }, [URL]);
 
+  //============= ANIMATION =============
+  const parent = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    parent.current &&
+      autoAnimate(parent.current);
+  }, [parent]);
+  //======================================
+
   return (
     <Container>
       <TabContainer>
@@ -96,7 +106,13 @@ function ReviewsProduct() {
         ))}
       </TabContainer>
 
-      {tabId === 1 ? <Description desc={productDesc[0]?.desc} /> : <Reviews />}
+      <div ref={parent}>
+        {tabId === 1 ? (
+          <Description desc={productDesc[0]?.desc} />
+        ) : (
+          <Reviews />
+        )}
+      </div>
 
       <RelatedProductsContainer>
         <RelatedProductsTitle>

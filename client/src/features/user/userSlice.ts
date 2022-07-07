@@ -4,7 +4,7 @@ import { UserState } from './types'
 export const initialState: UserState = {
     currentUser: null,
     isFetching: false,
-    error: false,
+    error: false
 }
 
 const userSlice = createSlice({
@@ -31,7 +31,7 @@ const userSlice = createSlice({
         },
         registerSuccess: (state, action) => {
             state.isFetching = false
-            state.currentUser = action.payload
+            state.error = false
         },
         registerFailure: (state) => {
             state.isFetching = false

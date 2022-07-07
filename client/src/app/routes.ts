@@ -7,7 +7,7 @@ const Register = lazy(() => import("./pages/register"));
 const Login = lazy(() => import("./pages/login"));
 const Cart = lazy(() => import("./pages/card"));
 const Success = lazy(() => import("./pages/success"));
-const DetailNft = lazy(() => import("./pages/detail-nft"));
+const CommingSoon = lazy(() => import("./pages/comming-soon"));
 
 const Test = lazy(() => import("./pages/product-list"))
 
@@ -61,10 +61,16 @@ const routes = [
         component: Register
     },
     {
-        path: '/detail-nft',
+        path: '/news',
         exact: true,
         public: true,
-        component: DetailNft
+        component: CommingSoon
+    },
+    {
+        path: '/about',
+        exact: true,
+        public: true,
+        component: CommingSoon
     }
 ]
 

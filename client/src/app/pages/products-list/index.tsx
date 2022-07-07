@@ -72,7 +72,9 @@ function ProductsList() {
   const URL = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:5000/';
 
   const arrSkeleton = Array.from(new Array(6));
-  const { isFetching } = useProduct()
+  // const { isFetching } = useProduct()
+
+  const [isFetching, setIsFetching] = useState<boolean>(true)
 
   const [isTogglePrice, setIsTogglePrice] = useState<boolean>(false);
   const [rangePrice, setRangePrice] = useState<number[]>([0, 200]);
@@ -299,6 +301,12 @@ function ProductsList() {
     };
   }, [productsAll]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsFetching(false)
+    }, 1000)
+  }, [])
+
   //Auto scroll top when page loaded:
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -315,7 +323,7 @@ function ProductsList() {
       <Wrapper>
         <TopWrapper>
           <TopWrapperLeft>
-            <Title>{cat?.toUpperCase()}</Title>
+            <Title>{cat ? cat?.toUpperCase() : "PRODUCTS"}</Title>
             <Detail>
               {t('product_list_header_title_1')}{' '}
               {status === 'none' ? productsAll.length : productSale.length}{' '}

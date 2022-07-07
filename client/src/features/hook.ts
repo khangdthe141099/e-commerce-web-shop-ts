@@ -3,6 +3,7 @@ import { selectCart } from './cart/selectors'
 import { selectProduct } from './product/selectors'
 import { selectUser } from './user/selectors' 
 import { getActive } from './active/activeSlice'
+import { selectLanguage } from './language/selectors'
 
 
 export const useCart = () => {
@@ -23,4 +24,9 @@ export const useProduct = () => {
 export const useActive = () => {
     const active = useSelector(getActive)
     return active
+}
+
+export const useLanguage = () => {
+    const language = useSelector(selectLanguage)
+    return language
 }
