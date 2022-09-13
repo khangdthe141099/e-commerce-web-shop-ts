@@ -33,12 +33,12 @@ export default function UserList() {
             <img
               className="userListImg"
               src={
-                params.row.img ||
+                params?.row?.img ||
                 "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"
               }
               alt=""
             />
-            {params.row.username}
+            {params?.row?.username}
           </div>
         );
       },
@@ -48,7 +48,7 @@ export default function UserList() {
       headerName: "Name",
       width: 180,
       renderCell: (params) => {
-        return <div className="userListUser">{params.row.name}</div>;
+        return <div className="userListUser">{params?.row?.name}</div>;
       },
     },
     {
@@ -56,7 +56,7 @@ export default function UserList() {
         headerName: "Address",
         width: 180,
         renderCell: (params) => {
-          return <div className="userListUser">{params.row.address}</div>;
+          return <div className="userListUser">{params?.row?.address}</div>;
         },
       },
       {
@@ -64,7 +64,7 @@ export default function UserList() {
         headerName: "Email",
         width: 180,
         renderCell: (params) => {
-          return <div className="userListUser">{params.row.email}</div>;
+          return <div className="userListUser">{params?.row?.email}</div>;
         },
       },
       {
@@ -72,7 +72,7 @@ export default function UserList() {
         headerName: "Role",
         width: 120,
         renderCell: (params) => {
-          return <div className="userListUser">{params.row.isAdmin ? 'Admin' : 'User'}</div>;
+          return <div className="userListUser">{params?.row?.isAdmin ? 'Admin' : 'User'}</div>;
         },
       },
     {
@@ -82,12 +82,12 @@ export default function UserList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/user/" + params.row._id}>
+            <Link to={"/user/" + params?.row?._id}>
               <button className="userListEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="userListDelete"
-                onClick={() => handleDelete(params.row._id)}
+                onClick={() => handleDelete(params?.row?._id)}
             />
           </>
         );
