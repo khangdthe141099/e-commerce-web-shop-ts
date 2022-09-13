@@ -163,7 +163,7 @@ function Cart() {
       <Wrapper>
         <Title>{t('product_cart_your_bag')}</Title>
         <Top>
-          <Link to={'/products'}>
+          <Link to={'/products/iphone'}>
             <TopButton onClick={() => dispatch(fetchProductStart())}>
               {t('product_cart_continue_shopping')}
             </TopButton>

@@ -1,0 +1,151 @@
+.loginContainer {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow-y: hidden;
+}
+
+.loginContainer_left {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.loginContainer__right {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer_left img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.loginContainer__right-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginContainer__right-top-title {
+    color: #607d8b;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #ff4584;
+    letter-spacing: 1px;
+    width: 24%;
+}
+
+.loginContainer__right-top-input {
+    margin-bottom: 20px;
+}
+
+.loginContainer__right-top-input label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #607d8b;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.loginContainer__right-top-input input {
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #607d8b;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+}
+
+.signInBtn {
+    background: #ff4584;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 30px;
+    width: 100%;
+    height: 40px;
+    margin: 0 auto; 
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.btnLoad {
+    cursor: not-allowed;
+}
+
+
+.signInBtn:hover {
+    background: #f53677;
+}
+
+.loginContainer__right-top-checkbox {
+    margin-bottom: 10px;
+    color: #607d8b;
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.signUp {
+    font-size: 16px;
+    color: #607d8b;
+    margin-bottom: 10px;
+}
+
+.signUp a {
+    color: #ff4584;
+}
+
+.list__socialMedia {
+    display: flex;
+    align-items: center;
+}
+
+.loginContainer__right-bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginContainer__right-bottom-title {
+    color: #607d8b;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.icon {
+    color: #ff4584;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.icon:hover {
+    opacity: 0.9;
+}
+
+

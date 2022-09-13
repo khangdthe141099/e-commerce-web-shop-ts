@@ -11,6 +11,7 @@ const ProductNew = lazy(() => import("./pages/product/product-new"))
 const UserList = lazy(() => import("./pages/user/user-list"))
 const UserDetail = lazy(() => import("./pages/user/user-detail"))
 const UserNew = lazy(() => import("./pages/user/new-user"))
+const LoginPage = lazy(() => import("./pages/login-page"))
 
 const routes = [
     {
@@ -45,7 +46,7 @@ const routes = [
         path: '/login',
         exact: true,
         public: true,
-        component: Login,
+        component: LoginPage,
         layout: null
     },
     {
